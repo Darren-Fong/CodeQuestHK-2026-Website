@@ -32,7 +32,7 @@ export default function ParticleBackground() {
     const createParticles = () => {
       const particleCount = Math.min(50, Math.floor(window.innerWidth / 20));
       particles = [];
-      
+
       for (let i = 0; i < particleCount; i++) {
         particles.push({
           x: Math.random() * canvas.width,
@@ -95,7 +95,7 @@ export default function ParticleBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 pointer-events-none"
+      className="pointer-events-none absolute inset-0"
       style={{ zIndex: 0 }}
     />
   );

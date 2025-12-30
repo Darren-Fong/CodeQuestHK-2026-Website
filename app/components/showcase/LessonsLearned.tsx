@@ -46,12 +46,12 @@ const lessons = [
 export default function LessonsLearned() {
   return (
     <SectionWrapper dark>
-      <div className="text-center mb-16">
+      <div className="mb-16 text-center">
         <motion.span
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="font-[family-name:var(--font-jetbrains-mono)] text-electric-cyan text-sm uppercase tracking-wider"
+          className="text-electric-cyan font-[family-name:var(--font-jetbrains-mono)] text-sm tracking-wider uppercase"
         >
           Our Journey
         </motion.span>
@@ -59,7 +59,7 @@ export default function LessonsLearned() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-[family-name:var(--font-space-grotesk)] text-4xl md:text-5xl font-bold text-storm-white mt-4"
+          className="text-storm-white mt-4 font-[family-name:var(--font-space-grotesk)] text-4xl font-bold md:text-5xl"
         >
           Lessons Learned
         </motion.h2>
@@ -68,13 +68,14 @@ export default function LessonsLearned() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="text-subtle-gray mt-4 max-w-2xl mx-auto"
+          className="text-subtle-gray mx-auto mt-4 max-w-2xl"
         >
-          Transparency matters. Here&apos;s what we learned from our 2025 event and how we&apos;re applying those lessons.
+          Transparency matters. Here&apos;s what we learned from our 2025 event
+          and how we&apos;re applying those lessons.
         </motion.p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
         {lessons.map((lesson, index) => (
           <motion.div
             key={lesson.title}
@@ -84,14 +85,16 @@ export default function LessonsLearned() {
             transition={{ delay: index * 0.15 }}
             className="glass rounded-2xl p-8"
           >
-            <div className={`w-12 h-12 rounded-full bg-ocean-depth flex items-center justify-center mb-4`}>
-              <lesson.icon className={`w-6 h-6 ${lesson.color}`} />
+            <div
+              className={`bg-ocean-depth mb-4 flex h-12 w-12 items-center justify-center rounded-full`}
+            >
+              <lesson.icon className={`h-6 w-6 ${lesson.color}`} />
             </div>
-            
-            <h3 className="font-[family-name:var(--font-space-grotesk)] text-xl font-bold text-storm-white mb-4">
+
+            <h3 className="text-storm-white mb-4 font-[family-name:var(--font-space-grotesk)] text-xl font-bold">
               {lesson.title}
             </h3>
-            
+
             <ul className="space-y-3">
               {lesson.points.map((point, pointIndex) => (
                 <motion.li
@@ -100,9 +103,11 @@ export default function LessonsLearned() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.15 + pointIndex * 0.05 }}
-                  className="flex items-start gap-2 text-subtle-gray text-sm"
+                  className="text-subtle-gray flex items-start gap-2 text-sm"
                 >
-                  <span className={`mt-1.5 w-1.5 h-1.5 rounded-full ${lesson.color.replace('text-', 'bg-')} flex-shrink-0`} />
+                  <span
+                    className={`mt-1.5 h-1.5 w-1.5 rounded-full ${lesson.color.replace("text-", "bg-")} flex-shrink-0`}
+                  />
                   {point}
                 </motion.li>
               ))}

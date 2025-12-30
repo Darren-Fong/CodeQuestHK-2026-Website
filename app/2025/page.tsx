@@ -10,7 +10,8 @@ import BridgeTo2026 from "../components/showcase/BridgeTo2026";
 
 export const metadata: Metadata = {
   title: "2025 Showcase | TyphoonHacks",
-  description: "Look back at our 2025 Game Jam - where the TyphoonHacks organizing team started. See the winning projects and participant testimonials.",
+  description:
+    "Look back at our 2025 Game Jam - where the TyphoonHacks organizing team started. See the winning projects and participant testimonials.",
 };
 
 export default function ShowcasePage() {

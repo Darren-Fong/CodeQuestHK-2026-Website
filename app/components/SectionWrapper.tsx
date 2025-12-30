@@ -22,7 +22,9 @@ export default function SectionWrapper({
       id={id}
       className={clsx(
         "relative py-20 md:py-28",
-        dark ? "bg-deep-space" : "bg-gradient-to-b from-deep-space to-ocean-depth",
+        dark
+          ? "bg-deep-space"
+          : "from-deep-space to-ocean-depth bg-gradient-to-b",
         className
       )}
     >
@@ -31,7 +33,7 @@ export default function SectionWrapper({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6 }}
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
       >
         {children}
       </motion.div>

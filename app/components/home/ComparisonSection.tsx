@@ -35,12 +35,12 @@ const comparisons = [
 export default function ComparisonSection() {
   return (
     <SectionWrapper dark>
-      <div className="text-center mb-16">
+      <div className="mb-16 text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-[family-name:var(--font-space-grotesk)] text-4xl md:text-5xl font-bold text-storm-white"
+          className="text-storm-white font-[family-name:var(--font-space-grotesk)] text-4xl font-bold md:text-5xl"
         >
           Not Your{" "}
           <span className="relative">
@@ -50,7 +50,7 @@ export default function ComparisonSection() {
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5, duration: 0.4 }}
-              className="absolute left-0 top-1/2 w-full h-0.5 bg-electric-cyan origin-left"
+              className="bg-electric-cyan absolute top-1/2 left-0 h-0.5 w-full origin-left"
             />
           </span>{" "}
           Competition
@@ -60,18 +60,23 @@ export default function ComparisonSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="text-subtle-gray mt-4 max-w-2xl mx-auto"
+          className="text-subtle-gray mx-auto mt-4 max-w-2xl"
         >
-          We&apos;re redefining what a student tech competition looks like in Hong Kong.
+          We&apos;re redefining what a student tech competition looks like in
+          Hong Kong.
         </motion.p>
       </div>
 
-      <div className="max-w-4xl mx-auto">
+      <div className="mx-auto max-w-4xl">
         {/* Header */}
-        <div className="grid grid-cols-3 gap-4 mb-4">
+        <div className="mb-4 grid grid-cols-3 gap-4">
           <div className="text-subtle-gray font-semibold">Aspect</div>
-          <div className="text-center text-subtle-gray/60 font-semibold">Others</div>
-          <div className="text-center text-electric-cyan font-semibold">TyphoonHacks</div>
+          <div className="text-subtle-gray/60 text-center font-semibold">
+            Others
+          </div>
+          <div className="text-electric-cyan text-center font-semibold">
+            TyphoonHacks
+          </div>
         </div>
 
         {/* Comparison rows */}
@@ -82,17 +87,17 @@ export default function ComparisonSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-            className="grid grid-cols-3 gap-4 py-4 border-t border-ocean-depth"
+            className="border-ocean-depth grid grid-cols-3 gap-4 border-t py-4"
           >
-            <div className="font-[family-name:var(--font-space-grotesk)] font-semibold text-storm-white">
+            <div className="text-storm-white font-[family-name:var(--font-space-grotesk)] font-semibold">
               {row.aspect}
             </div>
-            <div className="text-center text-subtle-gray/60 flex items-center justify-center gap-2">
-              <X className="w-4 h-4 text-red-400/60" />
+            <div className="text-subtle-gray/60 flex items-center justify-center gap-2 text-center">
+              <X className="h-4 w-4 text-red-400/60" />
               <span className="text-sm">{row.others}</span>
             </div>
-            <div className="text-center text-storm-white flex items-center justify-center gap-2">
-              <Check className="w-4 h-4 text-success-teal" />
+            <div className="text-storm-white flex items-center justify-center gap-2 text-center">
+              <Check className="text-success-teal h-4 w-4" />
               <span className="text-sm font-medium">{row.typhoonhacks}</span>
             </div>
           </motion.div>

@@ -24,7 +24,9 @@ export default function FinalCTA() {
       if (difference > 0) {
         setTimeLeft({
           days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          hours: Math.floor(
+            (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          ),
           minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
           seconds: Math.floor((difference % (1000 * 60)) / 1000),
         });
@@ -37,32 +39,34 @@ export default function FinalCTA() {
   }, []);
 
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section className="relative overflow-hidden py-24">
       {/* Enhanced background */}
-      <div 
+      <div
         className="absolute inset-0"
         style={{
-          background: "linear-gradient(135deg, #0d2847 0%, #1a3a5c 50%, #0d2847 100%)",
+          background:
+            "linear-gradient(135deg, #0d2847 0%, #1a3a5c 50%, #0d2847 100%)",
         }}
       />
       <ParticleBackground />
-      
+
       {/* Glow effect */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div 
-          className="w-[600px] h-[600px] rounded-full opacity-20"
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+        <div
+          className="h-[600px] w-[600px] rounded-full opacity-20"
           style={{
-            background: "radial-gradient(circle, rgba(0,212,255,0.4) 0%, transparent 70%)",
+            background:
+              "radial-gradient(circle, rgba(0,212,255,0.4) 0%, transparent 70%)",
           }}
         />
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+      <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-[family-name:var(--font-space-grotesk)] text-4xl md:text-5xl lg:text-6xl font-bold text-storm-white mb-8"
+          className="text-storm-white mb-8 font-[family-name:var(--font-space-grotesk)] text-4xl font-bold md:text-5xl lg:text-6xl"
         >
           Ready to Build the Future?
         </motion.h2>
@@ -83,11 +87,14 @@ export default function FinalCTA() {
               { value: timeLeft.minutes, label: "Minutes" },
               { value: timeLeft.seconds, label: "Seconds" },
             ].map((unit) => (
-              <div key={unit.label} className="glass rounded-xl p-4 min-w-[70px] md:min-w-[90px]">
-                <div className="font-[family-name:var(--font-space-grotesk)] text-3xl md:text-4xl font-bold text-electric-cyan">
+              <div
+                key={unit.label}
+                className="glass min-w-[70px] rounded-xl p-4 md:min-w-[90px]"
+              >
+                <div className="text-electric-cyan font-[family-name:var(--font-space-grotesk)] text-3xl font-bold md:text-4xl">
                   {String(unit.value).padStart(2, "0")}
                 </div>
-                <div className="text-subtle-gray text-xs md:text-sm mt-1">
+                <div className="text-subtle-gray mt-1 text-xs md:text-sm">
                   {unit.label}
                 </div>
               </div>
@@ -101,11 +108,11 @@ export default function FinalCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <Link
             href="/partners"
-            className="group relative px-10 py-4 bg-electric-cyan text-deep-space font-bold rounded-full text-lg overflow-hidden"
+            className="group bg-electric-cyan text-deep-space relative overflow-hidden rounded-full px-10 py-4 text-lg font-bold"
           >
             <span className="relative z-10">Register Now</span>
             <motion.div

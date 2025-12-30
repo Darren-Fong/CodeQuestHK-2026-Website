@@ -8,10 +8,10 @@ interface TyphoonLogoProps {
   animated?: boolean;
 }
 
-export default function TyphoonLogo({ 
-  size = 40, 
+export default function TyphoonLogo({
+  size = 40,
   className = "",
-  animated = false 
+  animated = false,
 }: TyphoonLogoProps) {
   return (
     <motion.svg
@@ -22,7 +22,11 @@ export default function TyphoonLogo({
       xmlns="http://www.w3.org/2000/svg"
       className={className}
       whileHover={animated ? { scale: 1.05 } : undefined}
-      style={animated ? { filter: "drop-shadow(0 0 10px rgba(0, 212, 255, 0.5))" } : undefined}
+      style={
+        animated
+          ? { filter: "drop-shadow(0 0 10px rgba(0, 212, 255, 0.5))" }
+          : undefined
+      }
     >
       {/* Typhoon spiral line art */}
       <motion.path

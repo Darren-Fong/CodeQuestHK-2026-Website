@@ -11,7 +11,8 @@ import PartnerFAQ from "../components/partners/PartnerFAQ";
 
 export const metadata: Metadata = {
   title: "Partner With Us | TyphoonHacks 2026",
-  description: "Join Hong Kong's most ambitious student hackathon as a sponsor or partner. Access top talent, gain brand visibility, and support STEM education.",
+  description:
+    "Join Hong Kong's most ambitious student hackathon as a sponsor or partner. Access top talent, gain brand visibility, and support STEM education.",
 };
 
 export default function PartnersPage() {

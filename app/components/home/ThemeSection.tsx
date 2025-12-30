@@ -14,38 +14,39 @@ const features = [
 export default function ThemeSection() {
   return (
     <SectionWrapper dark>
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
+      <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-5">
         {/* Left content - 3 columns */}
         <div className="lg:col-span-3">
           <motion.span
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="font-[family-name:var(--font-jetbrains-mono)] text-electric-cyan text-sm uppercase tracking-wider"
+            className="text-electric-cyan font-[family-name:var(--font-jetbrains-mono)] text-sm tracking-wider uppercase"
           >
             2026 Theme
           </motion.span>
-          
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-[family-name:var(--font-space-grotesk)] text-3xl md:text-4xl lg:text-5xl font-bold text-storm-white mt-4 mb-6"
+            className="text-storm-white mt-4 mb-6 font-[family-name:var(--font-space-grotesk)] text-3xl font-bold md:text-4xl lg:text-5xl"
           >
             Technology Consulting for the Future
           </motion.h2>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-subtle-gray text-lg leading-relaxed mb-8"
+            className="text-subtle-gray mb-8 text-lg leading-relaxed"
           >
-            This year, we&apos;re bridging the gap between student innovation and industry needs. 
-            Partner companies will present real challenges they face, and you&apos;ll have 48 hours 
-            to develop technological solutions. Think of it as being a tech consultant—but with 
-            the freedom to build whatever you envision.
+            This year, we&apos;re bridging the gap between student innovation
+            and industry needs. Partner companies will present real challenges
+            they face, and you&apos;ll have 48 hours to develop technological
+            solutions. Think of it as being a tech consultant—but with the
+            freedom to build whatever you envision.
           </motion.p>
 
           <motion.ul
@@ -62,9 +63,9 @@ export default function ThemeSection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 + index * 0.1 }}
-                className="flex items-center gap-3 text-storm-white"
+                className="text-storm-white flex items-center gap-3"
               >
-                <Check className="w-5 h-5 text-electric-cyan flex-shrink-0" />
+                <Check className="text-electric-cyan h-5 w-5 flex-shrink-0" />
                 <span>{feature}</span>
               </motion.li>
             ))}
@@ -77,39 +78,52 @@ export default function ThemeSection() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="lg:col-span-2 relative"
+          className="relative lg:col-span-2"
         >
-          <div className="relative aspect-square max-w-md mx-auto">
+          <div className="relative mx-auto aspect-square max-w-md">
             {/* Floating elements */}
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-0 left-1/4 glass rounded-xl p-4"
+              className="glass absolute top-0 left-1/4 rounded-xl p-4"
             >
-              <Lightbulb className="w-8 h-8 text-warning-amber" />
+              <Lightbulb className="text-warning-amber h-8 w-8" />
             </motion.div>
-            
+
             <motion.div
               animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              className="absolute top-1/3 right-0 glass rounded-xl p-4"
+              transition={{
+                duration: 3.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.5,
+              }}
+              className="glass absolute top-1/3 right-0 rounded-xl p-4"
             >
-              <Users className="w-8 h-8 text-electric-cyan" />
+              <Users className="text-electric-cyan h-8 w-8" />
             </motion.div>
-            
+
             <motion.div
               animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute bottom-1/4 left-0 glass rounded-xl p-4"
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1,
+              }}
+              className="glass absolute bottom-1/4 left-0 rounded-xl p-4"
             >
-              <Building className="w-8 h-8 text-success-teal" />
+              <Building className="text-success-teal h-8 w-8" />
             </motion.div>
 
             {/* Central illustration */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="relative w-48 h-48">
+              <div className="relative h-48 w-48">
                 {/* Connecting lines */}
-                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 200">
+                <svg
+                  className="absolute inset-0 h-full w-full"
+                  viewBox="0 0 200 200"
+                >
                   <motion.path
                     d="M100,50 L150,100 L100,150 L50,100 Z"
                     stroke="rgba(0, 212, 255, 0.3)"
@@ -161,11 +175,11 @@ export default function ThemeSection() {
                     transition={{ delay: 1.1 }}
                   />
                 </svg>
-                
+
                 {/* Central hub */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-electric-cyan/20 to-electric-cyan/5 border border-electric-cyan/30 flex items-center justify-center">
-                    <span className="font-[family-name:var(--font-space-grotesk)] text-electric-cyan font-bold text-2xl">
+                  <div className="from-electric-cyan/20 to-electric-cyan/5 border-electric-cyan/30 flex h-20 w-20 items-center justify-center rounded-full border bg-gradient-to-br">
+                    <span className="text-electric-cyan font-[family-name:var(--font-space-grotesk)] text-2xl font-bold">
                       TH
                     </span>
                   </div>

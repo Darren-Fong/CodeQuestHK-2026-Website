@@ -79,12 +79,12 @@ const tiers: Tier[] = [
 export default function SponsorshipTiers() {
   return (
     <SectionWrapper dark>
-      <div className="text-center mb-16">
+      <div className="mb-16 text-center">
         <motion.span
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="font-[family-name:var(--font-jetbrains-mono)] text-electric-cyan text-sm uppercase tracking-wider"
+          className="text-electric-cyan font-[family-name:var(--font-jetbrains-mono)] text-sm tracking-wider uppercase"
         >
           Partnership Options
         </motion.span>
@@ -92,7 +92,7 @@ export default function SponsorshipTiers() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-[family-name:var(--font-space-grotesk)] text-4xl md:text-5xl font-bold text-storm-white mt-4"
+          className="text-storm-white mt-4 font-[family-name:var(--font-space-grotesk)] text-4xl font-bold md:text-5xl"
         >
           Sponsorship Tiers
         </motion.h2>
@@ -101,13 +101,14 @@ export default function SponsorshipTiers() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="text-subtle-gray mt-4 max-w-2xl mx-auto"
+          className="text-subtle-gray mx-auto mt-4 max-w-2xl"
         >
-          Choose the partnership level that fits your goals. All tiers include recognition and our gratitude for supporting student innovation.
+          Choose the partnership level that fits your goals. All tiers include
+          recognition and our gratitude for supporting student innovation.
         </motion.p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
         {tiers.map((tier, index) => (
           <motion.div
             key={tier.name}
@@ -115,36 +116,44 @@ export default function SponsorshipTiers() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-            className={`relative glass rounded-2xl p-6 ${
-              tier.featured ? "border-2 border-electric-cyan/50 lg:-mt-4 lg:mb-4" : ""
+            className={`glass relative rounded-2xl p-6 ${
+              tier.featured
+                ? "border-electric-cyan/50 border-2 lg:-mt-4 lg:mb-4"
+                : ""
             }`}
           >
             {tier.featured && (
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 flex items-center gap-1 px-3 py-1 bg-electric-cyan text-deep-space text-xs font-bold rounded-full">
-                <Star className="w-3 h-3" /> PREMIER
+              <div className="bg-electric-cyan text-deep-space absolute -top-3 left-1/2 flex -translate-x-1/2 items-center gap-1 rounded-full px-3 py-1 text-xs font-bold">
+                <Star className="h-3 w-3" /> PREMIER
               </div>
             )}
 
-            <div className="text-center mb-6 mt-2">
-              <h3 className={`font-[family-name:var(--font-space-grotesk)] text-2xl font-bold bg-gradient-to-r ${tier.color} bg-clip-text text-transparent`}>
+            <div className="mt-2 mb-6 text-center">
+              <h3
+                className={`bg-gradient-to-r font-[family-name:var(--font-space-grotesk)] text-2xl font-bold ${tier.color} bg-clip-text text-transparent`}
+              >
                 {tier.name}
               </h3>
-              <p className="text-storm-white text-3xl font-bold mt-2">
+              <p className="text-storm-white mt-2 text-3xl font-bold">
                 {tier.price}
               </p>
             </div>
 
-            <ul className="space-y-3 mb-6">
+            <ul className="mb-6 space-y-3">
               {tier.benefits.map((benefit) => (
                 <li
                   key={benefit.name}
                   className={`flex items-start gap-2 text-sm ${
-                    benefit.included ? "text-storm-white" : "text-subtle-gray/50"
+                    benefit.included
+                      ? "text-storm-white"
+                      : "text-subtle-gray/50"
                   }`}
                 >
                   <Check
-                    className={`w-4 h-4 mt-0.5 flex-shrink-0 ${
-                      benefit.included ? "text-success-teal" : "text-subtle-gray/30"
+                    className={`mt-0.5 h-4 w-4 flex-shrink-0 ${
+                      benefit.included
+                        ? "text-success-teal"
+                        : "text-subtle-gray/30"
                     }`}
                   />
                   <span className={benefit.included ? "" : "line-through"}>
@@ -155,10 +164,10 @@ export default function SponsorshipTiers() {
             </ul>
 
             <button
-              className={`w-full py-3 rounded-lg font-semibold transition-all ${
+              className={`w-full rounded-lg py-3 font-semibold transition-all ${
                 tier.featured
                   ? "bg-electric-cyan text-deep-space hover:bg-electric-cyan/90"
-                  : "border border-electric-cyan/50 text-electric-cyan hover:bg-electric-cyan/10"
+                  : "border-electric-cyan/50 text-electric-cyan hover:bg-electric-cyan/10 border"
               }`}
             >
               Contact Us

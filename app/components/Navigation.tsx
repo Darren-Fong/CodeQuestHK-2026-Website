@@ -34,22 +34,22 @@ export default function Navigation() {
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
         className={clsx(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+          "fixed top-0 right-0 left-0 z-50 transition-all duration-300",
           isScrolled ? "glass shadow-lg" : "bg-transparent"
         )}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex h-16 items-center justify-between md:h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 group">
+            <Link href="/" className="group flex items-center gap-3">
               <TyphoonLogo size={40} animated />
-              <span className="font-[family-name:var(--font-space-grotesk)] font-bold text-xl text-storm-white group-hover:text-electric-cyan transition-colors">
+              <span className="text-storm-white group-hover:text-electric-cyan font-[family-name:var(--font-space-grotesk)] text-xl font-bold transition-colors">
                 TyphoonHacks
               </span>
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden items-center gap-8 md:flex">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -65,7 +65,7 @@ export default function Navigation() {
                   {pathname === link.href && (
                     <motion.div
                       layoutId="activeLink"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-electric-cyan"
+                      className="bg-electric-cyan absolute right-0 -bottom-1 left-0 h-0.5"
                       initial={{ scaleX: 0 }}
                       animate={{ scaleX: 1 }}
                       transition={{ duration: 0.3 }}
@@ -75,7 +75,7 @@ export default function Navigation() {
               ))}
               <Link
                 href="/partners"
-                className="px-5 py-2 bg-electric-cyan text-deep-space font-semibold rounded-full hover:bg-opacity-90 transition-all hover:shadow-lg hover:shadow-electric-cyan/30"
+                className="bg-electric-cyan text-deep-space hover:bg-opacity-90 hover:shadow-electric-cyan/30 rounded-full px-5 py-2 font-semibold transition-all hover:shadow-lg"
               >
                 Register Now
               </Link>
@@ -84,7 +84,7 @@ export default function Navigation() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-storm-white hover:text-electric-cyan transition-colors"
+              className="text-storm-white hover:text-electric-cyan p-2 transition-colors md:hidden"
               aria-label="Toggle menu"
             >
               <motion.div
@@ -106,9 +106,9 @@ export default function Navigation() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-deep-space/95 backdrop-blur-lg md:hidden"
+            className="bg-deep-space/95 fixed inset-0 z-40 backdrop-blur-lg md:hidden"
           >
-            <div className="flex flex-col items-center justify-center h-full gap-8">
+            <div className="flex h-full flex-col items-center justify-center gap-8">
               {navLinks.map((link, index) => (
                 <motion.div
                   key={link.href}
@@ -121,7 +121,7 @@ export default function Navigation() {
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={clsx(
-                      "text-2xl font-bold font-[family-name:var(--font-space-grotesk)]",
+                      "font-[family-name:var(--font-space-grotesk)] text-2xl font-bold",
                       pathname === link.href
                         ? "text-electric-cyan"
                         : "text-storm-white hover:text-electric-cyan"
@@ -140,7 +140,7 @@ export default function Navigation() {
                 <Link
                   href="/partners"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="px-8 py-3 bg-electric-cyan text-deep-space font-semibold rounded-full text-lg"
+                  className="bg-electric-cyan text-deep-space rounded-full px-8 py-3 text-lg font-semibold"
                 >
                   Register Now
                 </Link>

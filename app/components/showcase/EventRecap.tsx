@@ -31,7 +31,7 @@ function Counter({ value, delay = 0 }: { value: number; delay?: number }) {
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : {}}
       transition={{ delay }}
-      className="font-[family-name:var(--font-space-grotesk)] text-4xl md:text-5xl font-bold text-electric-cyan"
+      className="text-electric-cyan font-[family-name:var(--font-space-grotesk)] text-4xl font-bold md:text-5xl"
     >
       {isInView ? value : 0}
     </motion.span>
@@ -46,13 +46,13 @@ export default function EventRecap() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="glass rounded-2xl p-8 mb-16"
+        className="glass mb-16 rounded-2xl p-8"
       >
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {stats.map((stat, index) => (
             <div key={stat.label} className="text-center">
-              <div className="flex justify-center mb-2">
-                <stat.icon className="w-6 h-6 text-subtle-gray" />
+              <div className="mb-2 flex justify-center">
+                <stat.icon className="text-subtle-gray h-6 w-6" />
               </div>
               <Counter value={stat.value} delay={index * 0.1} />
               <p className="text-subtle-gray mt-2">{stat.label}</p>
@@ -62,18 +62,18 @@ export default function EventRecap() {
       </motion.div>
 
       {/* Photo Gallery */}
-      <div className="text-center mb-12">
+      <div className="mb-12 text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-[family-name:var(--font-space-grotesk)] text-3xl md:text-4xl font-bold text-storm-white"
+          className="text-storm-white font-[family-name:var(--font-space-grotesk)] text-3xl font-bold md:text-4xl"
         >
           Event Highlights
         </motion.h2>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
         {photos.map((photo, index) => (
           <motion.div
             key={photo.id}
@@ -82,18 +82,22 @@ export default function EventRecap() {
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
             whileHover={{ scale: 1.05 }}
-            className={`relative group cursor-pointer overflow-hidden rounded-xl ${
-              index === 0 || index === 5 ? "md:col-span-2 aspect-video" : "aspect-square"
+            className={`group relative cursor-pointer overflow-hidden rounded-xl ${
+              index === 0 || index === 5
+                ? "aspect-video md:col-span-2"
+                : "aspect-square"
             }`}
           >
             {/* Placeholder for photo */}
-            <div className="absolute inset-0 bg-gradient-to-br from-ocean-depth to-deep-space flex items-center justify-center">
-              <Camera className="w-12 h-12 text-subtle-gray/50" />
+            <div className="from-ocean-depth to-deep-space absolute inset-0 flex items-center justify-center bg-gradient-to-br">
+              <Camera className="text-subtle-gray/50 h-12 w-12" />
             </div>
-            
+
             {/* Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-deep-space/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-              <p className="text-storm-white text-sm font-medium">{photo.caption}</p>
+            <div className="from-deep-space/80 absolute inset-0 flex items-end bg-gradient-to-t to-transparent p-4 opacity-0 transition-opacity group-hover:opacity-100">
+              <p className="text-storm-white text-sm font-medium">
+                {photo.caption}
+              </p>
             </div>
           </motion.div>
         ))}

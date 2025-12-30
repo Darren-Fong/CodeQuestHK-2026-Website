@@ -8,34 +8,38 @@ const pillars = [
   {
     icon: Clock,
     title: "48 Hours of Innovation",
-    description: "A true hackathon experience. Build something amazing from scratch in just two days.",
+    description:
+      "A true hackathon experience. Build something amazing from scratch in just two days.",
   },
   {
     icon: Handshake,
     title: "Industry Partnerships",
-    description: "Work on real problems from leading Hong Kong companies and startups.",
+    description:
+      "Work on real problems from leading Hong Kong companies and startups.",
   },
   {
     icon: Code2,
     title: "Real Prototypes",
-    description: "No slide decks here. Create working prototypes that demonstrate your solution.",
+    description:
+      "No slide decks here. Create working prototypes that demonstrate your solution.",
   },
   {
     icon: MapPin,
     title: "Hong Kong's Best",
-    description: "Connect with the brightest high school minds from across the city.",
+    description:
+      "Connect with the brightest high school minds from across the city.",
   },
 ];
 
 export default function EventOverview() {
   return (
     <SectionWrapper id="overview">
-      <div className="text-center mb-16">
+      <div className="mb-16 text-center">
         <motion.span
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="font-[family-name:var(--font-jetbrains-mono)] text-electric-cyan text-sm uppercase tracking-wider"
+          className="text-electric-cyan font-[family-name:var(--font-jetbrains-mono)] text-sm tracking-wider uppercase"
         >
           What We Offer
         </motion.span>
@@ -43,13 +47,13 @@ export default function EventOverview() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-[family-name:var(--font-space-grotesk)] text-4xl md:text-5xl font-bold text-storm-white mt-4"
+          className="text-storm-white mt-4 font-[family-name:var(--font-space-grotesk)] text-4xl font-bold md:text-5xl"
         >
           The TyphoonHacks Experience
         </motion.h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
         {pillars.map((pillar, index) => (
           <motion.div
             key={pillar.title}
@@ -58,14 +62,14 @@ export default function EventOverview() {
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
             whileHover={{ y: -8, transition: { duration: 0.2 } }}
-            className="group glass rounded-2xl p-8 border-l-4 border-electric-cyan hover:shadow-lg hover:shadow-electric-cyan/10 transition-all"
+            className="group glass border-electric-cyan hover:shadow-electric-cyan/10 rounded-2xl border-l-4 p-8 transition-all hover:shadow-lg"
           >
             <div className="flex items-start gap-6">
-              <div className="flex-shrink-0 w-14 h-14 rounded-full bg-electric-cyan/10 flex items-center justify-center group-hover:bg-electric-cyan/20 transition-colors">
-                <pillar.icon className="w-7 h-7 text-electric-cyan" />
+              <div className="bg-electric-cyan/10 group-hover:bg-electric-cyan/20 flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full transition-colors">
+                <pillar.icon className="text-electric-cyan h-7 w-7" />
               </div>
               <div>
-                <h3 className="font-[family-name:var(--font-space-grotesk)] text-xl font-bold text-storm-white mb-2">
+                <h3 className="text-storm-white mb-2 font-[family-name:var(--font-space-grotesk)] text-xl font-bold">
                   {pillar.title}
                 </h3>
                 <p className="text-subtle-gray leading-relaxed">

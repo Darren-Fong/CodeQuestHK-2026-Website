@@ -30,22 +30,22 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 1500));
-    
+
     setIsSubmitting(false);
     setIsSubmitted(true);
   };
 
   return (
     <SectionWrapper id="contact">
-      <div className="text-center mb-12">
+      <div className="mb-12 text-center">
         <motion.span
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="font-[family-name:var(--font-jetbrains-mono)] text-electric-cyan text-sm uppercase tracking-wider"
+          className="text-electric-cyan font-[family-name:var(--font-jetbrains-mono)] text-sm tracking-wider uppercase"
         >
           Get in Touch
         </motion.span>
@@ -53,13 +53,13 @@ export default function ContactForm() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-[family-name:var(--font-space-grotesk)] text-4xl md:text-5xl font-bold text-storm-white mt-4"
+          className="text-storm-white mt-4 font-[family-name:var(--font-space-grotesk)] text-4xl font-bold md:text-5xl"
         >
           Partner Inquiry
         </motion.h2>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
+      <div className="grid grid-cols-1 gap-12 lg:grid-cols-5">
         {/* Form - 3 columns */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -69,76 +69,91 @@ export default function ContactForm() {
         >
           {isSubmitted ? (
             <div className="glass rounded-2xl p-12 text-center">
-              <div className="w-16 h-16 mx-auto rounded-full bg-success-teal/20 flex items-center justify-center mb-6">
-                <Send className="w-8 h-8 text-success-teal" />
+              <div className="bg-success-teal/20 mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full">
+                <Send className="text-success-teal h-8 w-8" />
               </div>
-              <h3 className="font-[family-name:var(--font-space-grotesk)] text-2xl font-bold text-storm-white mb-4">
+              <h3 className="text-storm-white mb-4 font-[family-name:var(--font-space-grotesk)] text-2xl font-bold">
                 Thank You!
               </h3>
               <p className="text-subtle-gray">
-                We&apos;ve received your inquiry and will get back to you within 2 business days.
+                We&apos;ve received your inquiry and will get back to you within
+                2 business days.
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="glass rounded-2xl p-8 space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form
+              onSubmit={handleSubmit}
+              className="glass space-y-6 rounded-2xl p-8"
+            >
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 {/* Company Name */}
                 <div>
-                  <label className="block text-sm font-medium text-storm-white mb-2">
+                  <label className="text-storm-white mb-2 block text-sm font-medium">
                     Company Name *
                   </label>
                   <input
                     type="text"
                     required
                     value={formData.companyName}
-                    onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                    className="w-full px-4 py-3 bg-ocean-depth border border-subtle-gray/30 rounded-lg text-storm-white placeholder:text-subtle-gray focus:outline-none focus:border-electric-cyan transition-colors"
+                    onChange={(e) =>
+                      setFormData({ ...formData, companyName: e.target.value })
+                    }
+                    className="bg-ocean-depth border-subtle-gray/30 text-storm-white placeholder:text-subtle-gray focus:border-electric-cyan w-full rounded-lg border px-4 py-3 transition-colors focus:outline-none"
                     placeholder="Your company"
                   />
                 </div>
 
                 {/* Contact Person */}
                 <div>
-                  <label className="block text-sm font-medium text-storm-white mb-2">
+                  <label className="text-storm-white mb-2 block text-sm font-medium">
                     Contact Person *
                   </label>
                   <input
                     type="text"
                     required
                     value={formData.contactPerson}
-                    onChange={(e) => setFormData({ ...formData, contactPerson: e.target.value })}
-                    className="w-full px-4 py-3 bg-ocean-depth border border-subtle-gray/30 rounded-lg text-storm-white placeholder:text-subtle-gray focus:outline-none focus:border-electric-cyan transition-colors"
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        contactPerson: e.target.value,
+                      })
+                    }
+                    className="bg-ocean-depth border-subtle-gray/30 text-storm-white placeholder:text-subtle-gray focus:border-electric-cyan w-full rounded-lg border px-4 py-3 transition-colors focus:outline-none"
                     placeholder="Your name"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 {/* Email */}
                 <div>
-                  <label className="block text-sm font-medium text-storm-white mb-2">
+                  <label className="text-storm-white mb-2 block text-sm font-medium">
                     Email *
                   </label>
                   <input
                     type="email"
                     required
                     value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 bg-ocean-depth border border-subtle-gray/30 rounded-lg text-storm-white placeholder:text-subtle-gray focus:outline-none focus:border-electric-cyan transition-colors"
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
+                    className="bg-ocean-depth border-subtle-gray/30 text-storm-white placeholder:text-subtle-gray focus:border-electric-cyan w-full rounded-lg border px-4 py-3 transition-colors focus:outline-none"
                     placeholder="your@email.com"
                   />
                 </div>
 
                 {/* Phone */}
                 <div>
-                  <label className="block text-sm font-medium text-storm-white mb-2">
+                  <label className="text-storm-white mb-2 block text-sm font-medium">
                     Phone (Optional)
                   </label>
                   <input
                     type="tel"
                     value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-3 bg-ocean-depth border border-subtle-gray/30 rounded-lg text-storm-white placeholder:text-subtle-gray focus:outline-none focus:border-electric-cyan transition-colors"
+                    onChange={(e) =>
+                      setFormData({ ...formData, phone: e.target.value })
+                    }
+                    className="bg-ocean-depth border-subtle-gray/30 text-storm-white placeholder:text-subtle-gray focus:border-electric-cyan w-full rounded-lg border px-4 py-3 transition-colors focus:outline-none"
                     placeholder="+852 XXXX XXXX"
                   />
                 </div>
@@ -146,16 +161,20 @@ export default function ContactForm() {
 
               {/* Tier Selection */}
               <div>
-                <label className="block text-sm font-medium text-storm-white mb-2">
+                <label className="text-storm-white mb-2 block text-sm font-medium">
                   Interested Tier *
                 </label>
                 <select
                   required
                   value={formData.tier}
-                  onChange={(e) => setFormData({ ...formData, tier: e.target.value })}
-                  className="w-full px-4 py-3 bg-ocean-depth border border-subtle-gray/30 rounded-lg text-storm-white focus:outline-none focus:border-electric-cyan transition-colors appearance-none cursor-pointer"
+                  onChange={(e) =>
+                    setFormData({ ...formData, tier: e.target.value })
+                  }
+                  className="bg-ocean-depth border-subtle-gray/30 text-storm-white focus:border-electric-cyan w-full cursor-pointer appearance-none rounded-lg border px-4 py-3 transition-colors focus:outline-none"
                 >
-                  <option value="" disabled>Select a tier</option>
+                  <option value="" disabled>
+                    Select a tier
+                  </option>
                   {tiers.map((tier) => (
                     <option key={tier.value} value={tier.value}>
                       {tier.label}
@@ -166,14 +185,16 @@ export default function ContactForm() {
 
               {/* Message */}
               <div>
-                <label className="block text-sm font-medium text-storm-white mb-2">
+                <label className="text-storm-white mb-2 block text-sm font-medium">
                   Message / Questions
                 </label>
                 <textarea
                   rows={4}
                   value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3 bg-ocean-depth border border-subtle-gray/30 rounded-lg text-storm-white placeholder:text-subtle-gray focus:outline-none focus:border-electric-cyan transition-colors resize-none"
+                  onChange={(e) =>
+                    setFormData({ ...formData, message: e.target.value })
+                  }
+                  className="bg-ocean-depth border-subtle-gray/30 text-storm-white placeholder:text-subtle-gray focus:border-electric-cyan w-full resize-none rounded-lg border px-4 py-3 transition-colors focus:outline-none"
                   placeholder="Tell us about your goals or any questions you have..."
                 />
               </div>
@@ -184,11 +205,20 @@ export default function ContactForm() {
                   type="checkbox"
                   id="problemStatement"
                   checked={formData.problemStatement}
-                  onChange={(e) => setFormData({ ...formData, problemStatement: e.target.checked })}
-                  className="mt-1 w-5 h-5 rounded border-subtle-gray/30 bg-ocean-depth text-electric-cyan focus:ring-electric-cyan"
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      problemStatement: e.target.checked,
+                    })
+                  }
+                  className="border-subtle-gray/30 bg-ocean-depth text-electric-cyan focus:ring-electric-cyan mt-1 h-5 w-5 rounded"
                 />
-                <label htmlFor="problemStatement" className="text-sm text-subtle-gray">
-                  I&apos;m interested in submitting a problem statement for teams to solve
+                <label
+                  htmlFor="problemStatement"
+                  className="text-subtle-gray text-sm"
+                >
+                  I&apos;m interested in submitting a problem statement for
+                  teams to solve
                 </label>
               </div>
 
@@ -196,16 +226,16 @@ export default function ContactForm() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-4 bg-electric-cyan text-deep-space font-bold rounded-lg hover:bg-electric-cyan/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="bg-electric-cyan text-deep-space hover:bg-electric-cyan/90 flex w-full items-center justify-center gap-2 rounded-lg py-4 font-bold transition-all disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {isSubmitting ? (
                   <>
-                    <div className="w-5 h-5 border-2 border-deep-space/30 border-t-deep-space rounded-full animate-spin" />
+                    <div className="border-deep-space/30 border-t-deep-space h-5 w-5 animate-spin rounded-full border-2" />
                     Sending...
                   </>
                 ) : (
                   <>
-                    <Send className="w-5 h-5" />
+                    <Send className="h-5 w-5" />
                     Send Inquiry
                   </>
                 )}
@@ -219,34 +249,35 @@ export default function ContactForm() {
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="lg:col-span-2 space-y-6"
+          className="space-y-6 lg:col-span-2"
         >
           <div className="glass rounded-xl p-6">
-            <h3 className="font-[family-name:var(--font-space-grotesk)] font-bold text-storm-white mb-4">
+            <h3 className="text-storm-white mb-4 font-[family-name:var(--font-space-grotesk)] font-bold">
               Direct Contact
             </h3>
-            
+
             <div className="space-y-4">
               <a
                 href="mailto:partners@typhoonhacks.com"
-                className="flex items-center gap-3 text-subtle-gray hover:text-electric-cyan transition-colors"
+                className="text-subtle-gray hover:text-electric-cyan flex items-center gap-3 transition-colors"
               >
-                <Mail className="w-5 h-5" />
+                <Mail className="h-5 w-5" />
                 <span>partners@typhoonhacks.com</span>
               </a>
-              
+
               <a
                 href="tel:+85212345678"
-                className="flex items-center gap-3 text-subtle-gray hover:text-electric-cyan transition-colors"
+                className="text-subtle-gray hover:text-electric-cyan flex items-center gap-3 transition-colors"
               >
-                <Phone className="w-5 h-5" />
+                <Phone className="h-5 w-5" />
                 <span>+852 1234 5678</span>
               </a>
-              
-              <div className="flex items-start gap-3 text-subtle-gray">
-                <MapPin className="w-5 h-5 flex-shrink-0 mt-0.5" />
+
+              <div className="text-subtle-gray flex items-start gap-3">
+                <MapPin className="mt-0.5 h-5 w-5 flex-shrink-0" />
                 <span>
-                  Central, Hong Kong<br />
+                  Central, Hong Kong
+                  <br />
                   (Event venue TBA)
                 </span>
               </div>
@@ -254,23 +285,24 @@ export default function ContactForm() {
           </div>
 
           <div className="glass rounded-xl p-6">
-            <h3 className="font-[family-name:var(--font-space-grotesk)] font-bold text-storm-white mb-4">
+            <h3 className="text-storm-white mb-4 font-[family-name:var(--font-space-grotesk)] font-bold">
               Response Time
             </h3>
-            
-            <div className="flex items-center gap-3 text-subtle-gray">
-              <Clock className="w-5 h-5 text-success-teal" />
+
+            <div className="text-subtle-gray flex items-center gap-3">
+              <Clock className="text-success-teal h-5 w-5" />
               <span>We typically respond within 2 business days</span>
             </div>
           </div>
 
-          <div className="glass rounded-xl p-6 border-l-4 border-warning-amber">
-            <h3 className="font-[family-name:var(--font-space-grotesk)] font-bold text-storm-white mb-2">
+          <div className="glass border-warning-amber rounded-xl border-l-4 p-6">
+            <h3 className="text-storm-white mb-2 font-[family-name:var(--font-space-grotesk)] font-bold">
               Limited Spots Available
             </h3>
             <p className="text-subtle-gray text-sm">
-              We have limited sponsorship slots to ensure each partner receives meaningful 
-              engagement. Early partners get priority placement and benefits.
+              We have limited sponsorship slots to ensure each partner receives
+              meaningful engagement. Early partners get priority placement and
+              benefits.
             </p>
           </div>
         </motion.div>
