@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import ParticleBackground from "@/app/components/ParticleBackground";
+import { linksConfig } from "@/app/config/links";
 
 export default function FinalCTA() {
   const [timeLeft, setTimeLeft] = useState({
@@ -111,10 +112,14 @@ export default function FinalCTA() {
           className="flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <Link
-            href="/partners"
+            href={linksConfig.registration.participant.link}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group bg-electric-cyan text-deep-space relative overflow-hidden rounded-full px-10 py-4 text-lg font-bold"
           >
-            <span className="relative z-10">Register Now</span>
+            <span className="relative z-10">
+              {linksConfig.registration.participant.label}
+            </span>
             <motion.div
               className="absolute inset-0 bg-white"
               initial={{ scale: 0, opacity: 0 }}
@@ -124,7 +129,7 @@ export default function FinalCTA() {
             />
           </Link>
           <Link
-            href="mailto:hello@typhoonhacks.com"
+            href={linksConfig.contact.general}
             className="text-subtle-gray hover:text-electric-cyan transition-colors"
           >
             Have questions? Contact us

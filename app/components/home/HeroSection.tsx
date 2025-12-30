@@ -6,6 +6,7 @@ import { ChevronDown, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import ParticleBackground from "../ParticleBackground";
 import TyphoonLogo from "../TyphoonLogo";
+import { linksConfig } from "@/app/config/links";
 
 const taglines = [
   "Build from scratch",
@@ -129,10 +130,12 @@ export default function HeroSection() {
           className="flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <Link
-            href="/partners"
+            href={linksConfig.registration.participant.link}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group bg-electric-cyan text-deep-space hover:shadow-electric-cyan/30 animate-pulse-glow rounded-full px-8 py-4 text-lg font-bold transition-all hover:shadow-lg"
           >
-            Register Now
+            {linksConfig.registration.participant.label}
           </Link>
           <Link
             href="#overview"

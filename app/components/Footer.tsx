@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Mail, Github, Instagram, Linkedin, ExternalLink } from "lucide-react";
+import { Mail, Instagram, ExternalLink } from "lucide-react";
 import TyphoonLogo from "./TyphoonLogo";
+import { linksConfig } from "@/app/config/links";
 
 const quickLinks = [
   { href: "/", label: "Home" },
@@ -13,18 +14,12 @@ const quickLinks = [
 ];
 
 const socialLinks = [
-  { href: "https://github.com/typhoonhacks", icon: Github, label: "GitHub" },
   {
-    href: "https://instagram.com/typhoonhacks",
+    href: linksConfig.social.instagram,
     icon: Instagram,
     label: "Instagram",
   },
-  {
-    href: "https://linkedin.com/company/typhoonhacks",
-    icon: Linkedin,
-    label: "LinkedIn",
-  },
-  { href: "mailto:hello@typhoonhacks.com", icon: Mail, label: "Email" },
+  { href: linksConfig.contact.general, icon: Mail, label: "Email" },
 ];
 
 export default function Footer() {

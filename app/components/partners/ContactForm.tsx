@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Send, Mail, MapPin, Clock } from "lucide-react";
 import SectionWrapper from "@/app/components/SectionWrapper";
+import { linksConfig, contactInfo } from "@/app/config/links";
 
 const tiers = [
   { value: "platinum", label: "Platinum (HK$50,000+)" },
@@ -258,20 +259,20 @@ export default function ContactForm() {
 
             <div className="space-y-4">
               <a
-                href="mailto:partners@typhoonhacks.com"
+                href={linksConfig.contact.partners}
                 className="text-subtle-gray hover:text-electric-cyan flex items-center gap-3 transition-colors"
               >
                 <Mail className="h-5 w-5" />
-                <span>partners@typhoonhacks.com</span>
+                <span>{contactInfo.partnerEmail}</span>
               </a>
 
-              <a
-                href="tel:+85212345678"
+              {/* <a
+                href={linksConfig.contact.phone}
                 className="text-subtle-gray hover:text-electric-cyan flex items-center gap-3 transition-colors"
               >
                 <Phone className="h-5 w-5" />
-                <span>+852 1234 5678</span>
-              </a>
+                <span>{contactInfo.phone}</span>
+              </a> */}
 
               <div className="text-subtle-gray flex items-start gap-3">
                 <MapPin className="mt-0.5 h-5 w-5 flex-shrink-0" />

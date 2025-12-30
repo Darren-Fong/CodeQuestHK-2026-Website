@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import TyphoonLogo from "./TyphoonLogo";
 import clsx from "clsx";
+import { linksConfig } from "@/app/config/links";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -74,10 +75,12 @@ export default function Navigation() {
                 </Link>
               ))}
               <Link
-                href="/partners"
+                href={linksConfig.registration.participant.link}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-electric-cyan text-deep-space hover:bg-opacity-90 hover:shadow-electric-cyan/30 rounded-full px-5 py-2 font-semibold transition-all hover:shadow-lg"
               >
-                Register Now
+                {linksConfig.registration.participant.label}
               </Link>
             </div>
 
@@ -138,11 +141,13 @@ export default function Navigation() {
                 transition={{ delay: 0.3 }}
               >
                 <Link
-                  href="/partners"
+                  href={linksConfig.registration.participant.link}
                   onClick={() => setIsMobileMenuOpen(false)}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-electric-cyan text-deep-space rounded-full px-8 py-3 text-lg font-semibold"
                 >
-                  Register Now
+                  {linksConfig.registration.participant.label}
                 </Link>
               </motion.div>
             </div>
