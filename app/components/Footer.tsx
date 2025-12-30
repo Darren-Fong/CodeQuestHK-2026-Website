@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Mail, Instagram, ExternalLink } from "lucide-react";
+import { Mail, Instagram } from "lucide-react";
 import TyphoonLogo from "./TyphoonLogo";
 import { linksConfig } from "@/app/config/links";
 
@@ -31,7 +31,7 @@ export default function Footer() {
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
           {/* Logo & Mission */}
           <div className="lg:col-span-1">
             <Link href="/" className="mb-4 flex items-center gap-3">
@@ -90,7 +90,7 @@ export default function Footer() {
           </div>
 
           {/* Newsletter */}
-          <div>
+          {/* <div>
             <h3 className="text-storm-white mb-4 font-[family-name:var(--font-space-grotesk)] font-semibold">
               Stay Updated
             </h3>
@@ -107,36 +107,15 @@ export default function Footer() {
                 Subscribe <ExternalLink size={14} />
               </button>
             </form>
-          </div>
+          </div> */}
         </div>
 
-        {/* Copyright */}
+        {/* Do we really need a copyright? */}
         <div className="border-ocean-depth mt-12 border-t pt-8">
-          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+          <div className="flex flex-col items-center justify-center gap-4 md:flex-row">
             <p className="text-subtle-gray font-[family-name:var(--font-jetbrains-mono)] text-xs">
-              © 2026 TyphoonHacks. All rights reserved.
-              <span className="ml-1 animate-pulse">_</span>
+              Made with ❤️ by the TyphoonHacks Team.
             </p>
-            <div className="text-subtle-gray flex items-center gap-6 text-xs">
-              <Link
-                href="/privacy"
-                className="hover:text-electric-cyan transition-colors"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                href="/terms"
-                className="hover:text-electric-cyan transition-colors"
-              >
-                Terms of Service
-              </Link>
-              <Link
-                href="/code-of-conduct"
-                className="hover:text-electric-cyan transition-colors"
-              >
-                Code of Conduct
-              </Link>
-            </div>
           </div>
         </div>
       </div>
