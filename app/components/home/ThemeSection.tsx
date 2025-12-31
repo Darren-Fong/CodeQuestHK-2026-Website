@@ -2,12 +2,14 @@
 
 import { motion } from "framer-motion";
 import { Check, Lightbulb, Users, Building } from "lucide-react";
+import TyphoonLogo from "../TyphoonLogo";
 import SectionWrapper from "@/app/components/SectionWrapper";
 
 const features = [
   "Tackle real-world business challenges",
   "Work with cutting-edge technologies",
-  "Mentorship from industry experts",
+  // Are we even able to get mentors??
+  // "Mentorship from industry experts",
   "Showcase your solutions to company leaders",
 ];
 
@@ -81,40 +83,111 @@ export default function ThemeSection() {
           className="relative lg:col-span-2"
         >
           <div className="relative mx-auto aspect-square max-w-md">
-            {/* Floating elements */}
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="glass absolute top-0 left-1/4 rounded-xl p-4"
-            >
-              <Lightbulb className="text-warning-amber h-8 w-8" />
-            </motion.div>
+            {/* Orbiting elements container */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              {/* Orbit ring 1 - Lightbulb */}
+              <motion.div
+                className="absolute h-48 w-48"
+                initial={{ rotate: 0, scale: 0 }}
+                whileInView={{ rotate: 360, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  rotate: {
+                    duration: 0.8,
+                    ease: [0.16, 1, 0.3, 1],
+                  },
+                  scale: {
+                    duration: 0.5,
+                    ease: "easeOut",
+                  },
+                }}
+                animate={{ rotate: 360 }}
+                style={{ animationDelay: "0.8s" }}
+              >
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{
+                    duration: 12,
+                    repeat: Infinity,
+                    ease: "linear",
+                    delay: 0.8,
+                  }}
+                  className="absolute h-full w-full"
+                >
+                  <div className="glass absolute -top-6 left-1/2 -translate-x-1/2 rounded-xl p-4">
+                    <Lightbulb className="text-warning-amber h-8 w-8" />
+                  </div>
+                </motion.div>
+              </motion.div>
 
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{
-                duration: 3.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 0.5,
-              }}
-              className="glass absolute top-1/3 right-0 rounded-xl p-4"
-            >
-              <Users className="text-electric-cyan h-8 w-8" />
-            </motion.div>
+              {/* Orbit ring 2 - Users */}
+              <motion.div
+                className="absolute h-56 w-56"
+                initial={{ rotate: 120, scale: 0 }}
+                whileInView={{ rotate: 480, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  rotate: {
+                    duration: 0.8,
+                    ease: [0.16, 1, 0.3, 1],
+                  },
+                  scale: {
+                    duration: 0.5,
+                    ease: "easeOut",
+                    delay: 0.1,
+                  },
+                }}
+              >
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{
+                    duration: 15,
+                    repeat: Infinity,
+                    ease: "linear",
+                    delay: 0.8,
+                  }}
+                  className="absolute h-full w-full"
+                >
+                  <div className="glass absolute -top-6 left-1/2 -translate-x-1/2 rounded-xl p-4">
+                    <Users className="text-electric-cyan h-8 w-8" />
+                  </div>
+                </motion.div>
+              </motion.div>
 
-            <motion.div
-              animate={{ y: [0, -8, 0] }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 1,
-              }}
-              className="glass absolute bottom-1/4 left-0 rounded-xl p-4"
-            >
-              <Building className="text-success-teal h-8 w-8" />
-            </motion.div>
+              {/* Orbit ring 3 - Building */}
+              <motion.div
+                className="absolute h-64 w-64"
+                initial={{ rotate: 240, scale: 0 }}
+                whileInView={{ rotate: 600, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  rotate: {
+                    duration: 0.8,
+                    ease: [0.16, 1, 0.3, 1],
+                  },
+                  scale: {
+                    duration: 0.5,
+                    ease: "easeOut",
+                    delay: 0.2,
+                  },
+                }}
+              >
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{
+                    duration: 18,
+                    repeat: Infinity,
+                    ease: "linear",
+                    delay: 0.8,
+                  }}
+                  className="absolute h-full w-full"
+                >
+                  <div className="glass absolute -top-6 left-1/2 -translate-x-1/2 rounded-xl p-4">
+                    <Building className="text-success-teal h-8 w-8" />
+                  </div>
+                </motion.div>
+              </motion.div>
+            </div>
 
             {/* Central illustration */}
             <div className="absolute inset-0 flex items-center justify-center">
@@ -178,11 +251,7 @@ export default function ThemeSection() {
 
                 {/* Central hub */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="from-electric-cyan/20 to-electric-cyan/5 border-electric-cyan/30 flex h-20 w-20 items-center justify-center rounded-full border bg-gradient-to-br">
-                    <span className="text-electric-cyan font-[family-name:var(--font-space-grotesk)] text-2xl font-bold">
-                      TH
-                    </span>
-                  </div>
+                  <TyphoonLogo className="text-electric-cyan h-16 w-16" />
                 </div>
               </div>
             </div>
