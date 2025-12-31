@@ -67,41 +67,55 @@ export default function ComparisonSection() {
         </motion.p>
       </div>
 
-      <div className="mx-auto max-w-4xl">
-        {/* Header */}
-        <div className="mb-4 grid grid-cols-3 gap-4">
-          <div className="text-subtle-gray font-semibold">Aspect</div>
-          <div className="text-subtle-gray/60 text-center font-semibold">
-            Others
-          </div>
-          <div className="text-electric-cyan text-center font-semibold">
-            TyphoonHacks
-          </div>
-        </div>
-
-        {/* Comparison rows */}
-        {comparisons.map((row, index) => (
-          <motion.div
-            key={row.aspect}
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-            className="border-ocean-depth grid grid-cols-3 gap-4 border-t py-4"
-          >
-            <div className="text-storm-white font-[family-name:var(--font-space-grotesk)] font-semibold">
-              {row.aspect}
-            </div>
-            <div className="text-subtle-gray/60 flex items-center justify-center gap-2 text-center">
-              <X className="h-4 w-4 text-red-400/60" />
-              <span className="text-sm">{row.others}</span>
-            </div>
-            <div className="text-storm-white flex items-center justify-center gap-2 text-center">
-              <Check className="text-success-teal h-4 w-4" />
-              <span className="text-sm font-medium">{row.typhoonhacks}</span>
-            </div>
-          </motion.div>
-        ))}
+      <div className="mx-auto max-w-4xl overflow-x-auto">
+        <table className="w-full border-collapse">
+          <thead>
+            <tr>
+              <th className="text-subtle-gray pb-4 text-left font-semibold">
+                Aspect
+              </th>
+              <th className="text-subtle-gray/60 pb-4 text-left font-semibold">
+                Others
+              </th>
+              <th className="text-electric-cyan pb-4 text-left font-semibold">
+                TyphoonHacks
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisons.map((row, index) => (
+              <motion.tr
+                key={row.aspect}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="border-ocean-depth border-t"
+              >
+                <th
+                  scope="row"
+                  className="text-storm-white py-4 text-left font-[family-name:var(--font-space-grotesk)] font-semibold"
+                >
+                  {row.aspect}
+                </th>
+                <td className="text-subtle-gray/60 py-4 text-left">
+                  <span className="flex items-center gap-2">
+                    <X className="h-4 w-4 text-red-400/60" />
+                    <span className="text-sm">{row.others}</span>
+                  </span>
+                </td>
+                <td className="text-storm-white py-4 text-left">
+                  <span className="flex items-center gap-2">
+                    <Check className="text-success-teal h-4 w-4" />
+                    <span className="text-sm font-medium">
+                      {row.typhoonhacks}
+                    </span>
+                  </span>
+                </td>
+              </motion.tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </SectionWrapper>
   );
