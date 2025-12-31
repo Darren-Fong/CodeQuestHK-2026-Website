@@ -8,7 +8,7 @@ import { linksConfig } from "@/app/config/links";
 
 const quickLinks = [
   { href: "/", label: "Home" },
-  { href: "/2025", label: "2025 Showcase" },
+  { href: "/2025", label: "2025" },
   { href: "/partners", label: "Partners" },
   { href: "/#faq", label: "FAQ" },
 ];
