@@ -3,61 +3,70 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus, Search } from "lucide-react";
+import Script from "next/script";
 import SectionWrapper from "@/app/components/SectionWrapper";
 
+const categories = [
+  "All",
+  "General",
+  "Eligibility",
+  "Teams",
+  "Technical",
+] as const;
+
 interface FAQItem {
-  category: string;
+  category: Exclude<(typeof categories)[number], "All">;
   question: string;
   answer: string;
 }
 
-const categories = ["General", "Eligibility", "Teams", "Technical", "Prizes"];
-
 const faqs: FAQItem[] = [
-  // General
+  {
+    category: "General",
+    question: "What is a hackathon?",
+    answer:
+      "A hackathon is an event where individuals come together to collaboratively build projects over a short period, typically 24-48 hours. Participants brainstorm ideas, form teams, and create working prototypes to solve real-world problems. At TyphoonHacks, you'll be learning and building in an energetic environment with people as passionate as you are!",
+  },
   {
     category: "General",
     question: "What is TyphoonHacks?",
     answer:
-      "TyphoonHacks is Hong Kong's first true 48-hour high school hackathon. Unlike traditional competitions focused on presentations and slides, we emphasize building working prototypes from scratch during the event.",
+      "TyphoonHacks is Hong Kong's first true 48-hour high school hackathon, organized by builders, for builders. Unlike traditional competitions focused on presentations and slides, we emphasize building working prototypes from scratch during the event.",
   },
   {
     category: "General",
-    question: "When and where will TyphoonHacks 2026 take place?",
+    question: "When and where will it take place?",
     answer:
-      "TyphoonHacks 2026 will be held from March 14-16, 2026. The venue will be announced closer to the event date. Follow our social media for updates!",
+      "TyphoonHacks 2026 will be held from February 14-15, 2026 (during CNY holidays). The venue will be announced shortly. Follow our social media for updates!",
   },
   {
     category: "General",
-    question: "How much does it cost to participate?",
+    question: "How much does it cost",
     answer:
-      "TyphoonHacks is completely free to participate! We provide meals, snacks, and swag to all participants. Our sponsors make this possible.",
-  },
-  // Eligibility
-  {
-    category: "Eligibility",
-    question: "Who can participate in TyphoonHacks?",
-    answer:
-      "TyphoonHacks is open to all high school students (Forms 1-6 or equivalent) currently enrolled in any Hong Kong school. International school students are welcome!",
+      "TyphoonHacks is completely free to participate! We believe in making tech opportunities accessible to all high school students in Hong Kong.",
   },
   {
     category: "Eligibility",
-    question: "Do I need prior coding experience?",
+    question: "Who can come?",
     answer:
-      "While some programming experience is helpful, we welcome students of all skill levels. We'll have mentors available to help beginners, and you can contribute to your team in many ways—design, research, presentation, and more.",
+      "TyphoonHacks is open to all Forms 1-5 or equivalent high school students currently enrolled in any Hong Kong school. Both local and international school students are welcome!",
   },
-  // Teams
+  {
+    category: "Eligibility",
+    question: "What if I don't know how to code?",
+    answer:
+      "TyphoonHacks is the perfect place to start! While some programming experience is helpful, we welcome students of all skill levels. We'll have mentors available to help beginners, and you can contribute to your team in many ways—design, research, presentation, and more.",
+  },
   {
     category: "Teams",
     question: "How big should my team be?",
     answer:
-      "Teams should have 2-4 members. You can register with a pre-formed team or join our team matching session before the event if you're looking for teammates.",
+      "Teams should have 3-5 members. You can register with a pre-formed team or join our team matching session before the event if you're looking for teammates.",
   },
   {
     category: "Teams",
     question: "Can team members be from different schools?",
-    answer:
-      "Absolutely! We encourage cross-school collaboration. Some of the best teams are formed by students from different backgrounds and schools.",
+    answer: "Absolutely! We encourage cross-school collaboration.",
   },
   {
     category: "Teams",
@@ -65,53 +74,55 @@ const faqs: FAQItem[] = [
     answer:
       "No worries! We'll host a team formation event before the hackathon where you can meet other participants and form teams. Many great friendships start at hackathons!",
   },
-  // Technical
   {
     category: "Technical",
     question: "What can we build?",
     answer:
-      "You can build web apps, mobile apps, hardware projects, AI/ML solutions, games, or any other technical project that addresses the problem statement. The sky's the limit!",
+      "It's up to you! You can build web apps, mobile apps, hardware projects, AI/ML solutions, or any other technical project that addresses the problem statement.",
   },
   {
     category: "Technical",
-    question: "Can we use pre-written code or templates?",
+    question: "Are previously started projects allowed?",
     answer:
-      "You must start from scratch at the hackathon. You cannot use pre-written code specific to your project idea. However, you can use open-source libraries, frameworks, and publicly available APIs.",
+      "You must start from scratch at the hackathon. All work should be done during the event to ensure a level playing field. However, feel free to use any publically-available resources.",
   },
-  {
-    category: "Technical",
-    question: "Will there be mentors available?",
-    answer:
-      "Yes! We'll have industry mentors available throughout the 48 hours to help with technical challenges, provide guidance, and review your progress.",
-  },
-  // Prizes
-  {
-    category: "Prizes",
-    question: "How are projects judged?",
-    answer:
-      "Projects are judged on: Innovation (25%), Technical Implementation (25%), Design & UX (20%), Relevance to Problem Statement (20%), and Presentation (10%). Judges include industry professionals and tech leaders.",
-  },
-  {
-    category: "Prizes",
-    question: "What prizes can we win?",
-    answer:
-      "We have cash prizes for the top 3 teams, plus category awards for Best Technical Implementation, Most Innovative Solution, Best UI/UX Design, and People's Choice. Total prize pool exceeds HK$35,000!",
-  },
+  // {
+  //   category: "Technical",
+  //   question: "Will there be mentors available?",
+  //   answer:
+  //     "Yes! We'll have industry mentors available throughout the 48 hours to help with technical challenges, provide guidance, and review your progress.",
+  // },
 ];
 
 export default function FAQSection() {
-  const [activeCategory, setActiveCategory] = useState("General");
+  const [activeCategory, setActiveCategory] =
+    useState<(typeof categories)[number]>("General");
   const [searchQuery, setSearchQuery] = useState("");
   const [openItems, setOpenItems] = useState<string[]>([]);
 
   const filteredFaqs = faqs.filter((faq) => {
-    const matchesCategory = faq.category === activeCategory;
+    const matchesCategory =
+      activeCategory === "All" || faq.category === activeCategory;
     const matchesSearch =
       searchQuery === "" ||
       faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
       faq.answer.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
+
+  // FAQ Schema.org structured data for SEO
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
 
   const toggleItem = (question: string) => {
     setOpenItems((prev) =>
@@ -123,6 +134,13 @@ export default function FAQSection() {
 
   return (
     <SectionWrapper id="faq" dark>
+      {/* JSON-LD structured data for SEO */}
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
       <div className="mb-12 text-center">
         <motion.span
           initial={{ opacity: 0 }}
@@ -177,6 +195,7 @@ export default function FAQSection() {
                 ? "bg-electric-cyan text-deep-space"
                 : "text-subtle-gray hover:text-storm-white hover:bg-ocean-depth"
             }`}
+            aria-pressed={activeCategory === category}
           >
             {category}
           </button>
@@ -202,10 +221,11 @@ export default function FAQSection() {
               <button
                 onClick={() => toggleItem(faq.question)}
                 className="flex w-full items-center justify-between px-6 py-4 text-left"
+                aria-expanded={openItems.includes(faq.question)}
               >
-                <span className="text-storm-white pr-4 font-[family-name:var(--font-space-grotesk)] font-semibold">
+                <h3 className="text-storm-white pr-4 font-[family-name:var(--font-space-grotesk)] text-base font-semibold">
                   {faq.question}
-                </span>
+                </h3>
                 <motion.div
                   animate={{
                     rotate: openItems.includes(faq.question) ? 45 : 0,
