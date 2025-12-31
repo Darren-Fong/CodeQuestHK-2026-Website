@@ -2,28 +2,24 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, Mail, MapPin, Clock } from "lucide-react";
+import { Send, Mail, Clipboard } from "lucide-react";
 import SectionWrapper from "@/app/components/SectionWrapper";
-import { linksConfig, contactInfo } from "@/app/config/links";
+import { contactInfo } from "@/app/config/links";
 
-const tiers = [
-  { value: "platinum", label: "Platinum (HK$50,000+)" },
-  { value: "gold", label: "Gold (HK$30,000)" },
-  { value: "silver", label: "Silver (HK$15,000)" },
-  { value: "bronze", label: "Bronze (HK$5,000)" },
-  { value: "custom", label: "Custom / In-Kind" },
-  { value: "undecided", label: "Not sure yet" },
+const partnershipTypes = [
+  { value: "event-sponsor", label: "Event Sponsor (resources & support)" },
+  { value: "industry-partner", label: "Industry Partner (problem statement)" },
+  { value: "both", label: "Both / Interested in exploring options" },
+  { value: "other", label: "Other / Not sure yet" },
 ];
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
-    companyName: "",
-    contactPerson: "",
+    contactName: "",
+    organization: "",
     email: "",
-    phone: "",
-    tier: "",
+    partnershipType: "",
     message: "",
-    problemStatement: false,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -56,8 +52,18 @@ export default function ContactForm() {
           viewport={{ once: true }}
           className="text-storm-white mt-4 font-[family-name:var(--font-space-grotesk)] text-4xl font-bold md:text-5xl"
         >
-          Partner Inquiry
+          Let&apos;s Start a Conversation
         </motion.h2>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="text-subtle-gray mx-auto mt-4 max-w-2xl"
+        >
+          Tell us about yourself and how you&apos;d like to be involved.
+          We&apos;ll follow up to discuss what works best for everyone.
+        </motion.p>
       </div>
 
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-5">
@@ -77,8 +83,8 @@ export default function ContactForm() {
                 Thank You!
               </h3>
               <p className="text-subtle-gray">
-                We&apos;ve received your inquiry and will get back to you within
-                2 business days.
+                We&apos;ve received your inquiry and will get back to you
+                shortly to discuss how we can work together.
               </p>
             </div>
           ) : (
@@ -87,98 +93,79 @@ export default function ContactForm() {
               className="glass space-y-6 rounded-2xl p-8"
             >
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                {/* Company Name */}
+                {/* Contact Name */}
                 <div>
                   <label className="text-storm-white mb-2 block text-sm font-medium">
-                    Company Name *
+                    Your Name *
                   </label>
                   <input
                     type="text"
                     required
-                    value={formData.companyName}
+                    value={formData.contactName}
                     onChange={(e) =>
-                      setFormData({ ...formData, companyName: e.target.value })
-                    }
-                    className="bg-ocean-depth border-subtle-gray/30 text-storm-white placeholder:text-subtle-gray focus:border-electric-cyan w-full rounded-lg border px-4 py-3 transition-colors focus:outline-none"
-                    placeholder="Your company"
-                  />
-                </div>
-
-                {/* Contact Person */}
-                <div>
-                  <label className="text-storm-white mb-2 block text-sm font-medium">
-                    Contact Person *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={formData.contactPerson}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        contactPerson: e.target.value,
-                      })
+                      setFormData({ ...formData, contactName: e.target.value })
                     }
                     className="bg-ocean-depth border-subtle-gray/30 text-storm-white placeholder:text-subtle-gray focus:border-electric-cyan w-full rounded-lg border px-4 py-3 transition-colors focus:outline-none"
                     placeholder="Your name"
                   />
                 </div>
-              </div>
 
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                {/* Email */}
+                {/* Organization */}
                 <div>
                   <label className="text-storm-white mb-2 block text-sm font-medium">
-                    Email *
+                    Organization
                   </label>
                   <input
-                    type="email"
-                    required
-                    value={formData.email}
+                    type="text"
+                    value={formData.organization}
                     onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
+                      setFormData({ ...formData, organization: e.target.value })
                     }
                     className="bg-ocean-depth border-subtle-gray/30 text-storm-white placeholder:text-subtle-gray focus:border-electric-cyan w-full rounded-lg border px-4 py-3 transition-colors focus:outline-none"
-                    placeholder="your@email.com"
-                  />
-                </div>
-
-                {/* Phone */}
-                <div>
-                  <label className="text-storm-white mb-2 block text-sm font-medium">
-                    Phone (Optional)
-                  </label>
-                  <input
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) =>
-                      setFormData({ ...formData, phone: e.target.value })
-                    }
-                    className="bg-ocean-depth border-subtle-gray/30 text-storm-white placeholder:text-subtle-gray focus:border-electric-cyan w-full rounded-lg border px-4 py-3 transition-colors focus:outline-none"
-                    placeholder="+852 XXXX XXXX"
+                    placeholder="Company or organization (optional)"
                   />
                 </div>
               </div>
 
-              {/* Tier Selection */}
+              {/* Email */}
               <div>
                 <label className="text-storm-white mb-2 block text-sm font-medium">
-                  Interested Tier *
+                  Email *
+                </label>
+                <input
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
+                  className="bg-ocean-depth border-subtle-gray/30 text-storm-white placeholder:text-subtle-gray focus:border-electric-cyan w-full rounded-lg border px-4 py-3 transition-colors focus:outline-none"
+                  placeholder="your@email.com"
+                />
+              </div>
+
+              {/* Partnership Type */}
+              <div>
+                <label className="text-storm-white mb-2 block text-sm font-medium">
+                  How would you like to get involved? *
                 </label>
                 <select
                   required
-                  value={formData.tier}
+                  value={formData.partnershipType}
                   onChange={(e) =>
-                    setFormData({ ...formData, tier: e.target.value })
+                    setFormData({
+                      ...formData,
+                      partnershipType: e.target.value,
+                    })
                   }
                   className="bg-ocean-depth border-subtle-gray/30 text-storm-white focus:border-electric-cyan w-full cursor-pointer appearance-none rounded-lg border px-4 py-3 transition-colors focus:outline-none"
                 >
                   <option value="" disabled>
-                    Select a tier
+                    Select an option
                   </option>
-                  {tiers.map((tier) => (
-                    <option key={tier.value} value={tier.value}>
-                      {tier.label}
+                  {partnershipTypes.map((type) => (
+                    <option key={type.value} value={type.value}>
+                      {type.label}
                     </option>
                   ))}
                 </select>
@@ -187,7 +174,7 @@ export default function ContactForm() {
               {/* Message */}
               <div>
                 <label className="text-storm-white mb-2 block text-sm font-medium">
-                  Message / Questions
+                  Tell us more
                 </label>
                 <textarea
                   rows={4}
@@ -196,31 +183,8 @@ export default function ContactForm() {
                     setFormData({ ...formData, message: e.target.value })
                   }
                   className="bg-ocean-depth border-subtle-gray/30 text-storm-white placeholder:text-subtle-gray focus:border-electric-cyan w-full resize-none rounded-lg border px-4 py-3 transition-colors focus:outline-none"
-                  placeholder="Tell us about your goals or any questions you have..."
+                  placeholder="What resources could you provide? What challenges does your company face that students could tackle? Any questions?"
                 />
-              </div>
-
-              {/* Problem Statement Checkbox */}
-              <div className="flex items-start gap-3">
-                <input
-                  type="checkbox"
-                  id="problemStatement"
-                  checked={formData.problemStatement}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      problemStatement: e.target.checked,
-                    })
-                  }
-                  className="border-subtle-gray/30 bg-ocean-depth text-electric-cyan focus:ring-electric-cyan mt-1 h-5 w-5 rounded"
-                />
-                <label
-                  htmlFor="problemStatement"
-                  className="text-subtle-gray text-sm"
-                >
-                  I&apos;m interested in submitting a problem statement for
-                  teams to solve
-                </label>
               </div>
 
               {/* Submit */}
@@ -237,7 +201,7 @@ export default function ContactForm() {
                 ) : (
                   <>
                     <Send className="h-5 w-5" />
-                    Send Inquiry
+                    Send Message
                   </>
                 )}
               </button>
@@ -254,57 +218,29 @@ export default function ContactForm() {
         >
           <div className="glass rounded-xl p-6">
             <h3 className="text-storm-white mb-4 font-[family-name:var(--font-space-grotesk)] font-bold">
-              Direct Contact
+              Prefer Email?
             </h3>
 
             <div className="space-y-4">
-              <a
-                href={linksConfig.contact.partners}
-                className="text-subtle-gray hover:text-electric-cyan flex items-center gap-3 transition-colors"
-              >
+              <p className="text-electric-cyan hover:text-electric-cyan/80 flex items-center gap-3 transition-colors">
                 <Mail className="h-5 w-5" />
                 <span>{contactInfo.partnerEmail}</span>
-              </a>
+                <button
+                  onClick={() =>
+                    navigator.clipboard.writeText(contactInfo.partnerEmail)
+                  }
+                  className="text-electric-cyan hover:text-electric-cyan/80 ml-auto transition-colors"
+                  title="Copy email to clipboard"
+                >
+                  <Clipboard className="h-4 w-4" />
+                </button>
+              </p>
 
-              {/* <a
-                href={linksConfig.contact.phone}
-                className="text-subtle-gray hover:text-electric-cyan flex items-center gap-3 transition-colors"
-              >
-                <Phone className="h-5 w-5" />
-                <span>{contactInfo.phone}</span>
-              </a> */}
-
-              <div className="text-subtle-gray flex items-start gap-3">
-                <MapPin className="mt-0.5 h-5 w-5 flex-shrink-0" />
-                <span>
-                  Central, Hong Kong
-                  <br />
-                  (Event venue TBA)
-                </span>
-              </div>
+              <p className="text-subtle-gray text-sm">
+                Feel free to reach out directly if you prefer. We&apos;ll
+                respond within a few days.
+              </p>
             </div>
-          </div>
-
-          <div className="glass rounded-xl p-6">
-            <h3 className="text-storm-white mb-4 font-[family-name:var(--font-space-grotesk)] font-bold">
-              Response Time
-            </h3>
-
-            <div className="text-subtle-gray flex items-center gap-3">
-              <Clock className="text-success-teal h-5 w-5" />
-              <span>We typically respond within 2 business days</span>
-            </div>
-          </div>
-
-          <div className="glass border-warning-amber rounded-xl border-l-4 p-6">
-            <h3 className="text-storm-white mb-2 font-[family-name:var(--font-space-grotesk)] font-bold">
-              Limited Spots Available
-            </h3>
-            <p className="text-subtle-gray text-sm">
-              We have limited sponsorship slots to ensure each partner receives
-              meaningful engagement. Early partners get priority placement and
-              benefits.
-            </p>
           </div>
         </motion.div>
       </div>

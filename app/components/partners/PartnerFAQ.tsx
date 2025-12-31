@@ -7,44 +7,54 @@ import SectionWrapper from "@/app/components/SectionWrapper";
 
 const faqs = [
   {
-    question: "What is the expected reach of TyphoonHacks 2026?",
+    question: "What is TyphoonHacks?",
     answer:
-      "We anticipate 200+ participants from high schools across Hong Kong, with additional reach through social media (5,000+ followers), school networks, and media coverage. Our 2025 event reached over 10,000 people through various channels.",
+      "TyphoonHacks is Hong Kong's only true student-run, high-school-only, 48-hour hackathon. Unlike typical competitions where students prepare projects in advance, participants must build everything from scratch during the event. This creates authentic innovation under real-world pressure.",
   },
   {
     question: "When and where is the event?",
     answer:
-      "TyphoonHacks 2026 will take place March 14-16, 2026 (48 hours). The venue will be in Central Hong Kong—exact location to be announced in early 2026. As a sponsor, you'll receive venue details as soon as they're confirmed.",
+      "TyphoonHacks 2026 will take place February 14-15, 2026 (during CNY holidays). We're currently finalizing the venue in Hong Kong. Partners interested in providing venue space are especially welcome to reach out!",
   },
   {
-    question: "What deliverables do sponsors receive?",
+    question: "What's the 2026 theme?",
     answer:
-      "Deliverables vary by tier but include: logo placement (website, venue, swag), social media mentions and dedicated posts, photo/video content from the event, participant demographics report, and access to project submissions. Higher tiers include additional benefits like speaking opportunities and recruitment access.",
+      "This year's theme is 'Technology Consulting for the Future.' Partner companies present real business challenges, and student teams develop technological solutions over 48 hours. It's like having a consulting team work on your problem, but with the freedom to build creative, unconventional solutions.",
+  },
+  {
+    question: "What kind of support are you looking for?",
+    answer:
+      "We're looking for two types of partners: Event Sponsors who can provide resources like venue space, mentorship, prizes (monetary or in-kind like internships), food, or technology equipment. And Industry Partners who can submit real business challenges for students to solve during the hackathon.",
+  },
+  {
+    question: "Do you have fixed sponsorship tiers?",
+    answer:
+      "No, we don't have rigid tiers or packages. We believe every partnership is unique. Let's have a conversation about what you can offer and what would be valuable for you.",
+  },
+  {
+    question: "What do partners get in return?",
+    answer:
+      "All partners receive visibility on our website, social media, and at the event. You may also get access to talented students, the opportunity to see fresh solutions to your challenges, and the satisfaction of supporting STEM education in Hong Kong. We'll discuss specific benefits based on your contribution.",
+  },
+  {
+    question: "How many students will participate?",
+    answer:
+      "We're targeting 60-80 high school students from schools across Hong Kong. Participants range from beginners to experienced coders, designers, and business-minded students, all working in teams of 3-5.",
   },
   {
     question: "Can we send representatives to the event?",
     answer:
-      "Absolutely! We encourage sponsor representatives to attend. Depending on your tier, you may have opportunities to: serve as judges, host workshops, staff a recruitment booth, or simply observe and network. We'll coordinate logistics closer to the event.",
+      "Absolutely! We encourage partners to attend. Depending on your involvement, you might serve as judges, provide mentorship during the 48 hours, or simply observe and network with participants. We'll coordinate the details closer to the event.",
   },
   {
-    question: "How are sponsorship funds used?",
+    question: "What if we want to provide a problem statement?",
     answer:
-      "Funds directly support: venue rental, meals and refreshments for participants, prizes and awards, swag and materials, technology and equipment, marketing and outreach, and safety/logistics. We're committed to transparency and can provide detailed budget breakdowns upon request.",
+      "Great! As an Industry Partner, you'd present a real challenge your company faces. Students choose which problems to tackle and build working prototypes. You'll see the solutions at the end and can provide feedback.",
   },
   {
-    question: "What makes TyphoonHacks different from other student events?",
+    question: "Is there a deadline to become a partner?",
     answer:
-      "Unlike case competitions or pitch events, TyphoonHacks focuses on building working prototypes. Students must start from scratch during the 48 hours—no pre-prepared projects. This means sponsors see genuine innovation and problem-solving skills, not rehearsed presentations.",
-  },
-  {
-    question: "Can we provide in-kind sponsorship?",
-    answer:
-      "Yes! We welcome in-kind contributions such as: venue space, food/beverage, technology (laptops, cloud credits, software licenses), prizes, swag items, and professional services. Contact us to discuss how your contribution might fit.",
-  },
-  {
-    question: "Is there a deadline to become a sponsor?",
-    answer:
-      "While we accept sponsors on a rolling basis, early commitment (before January 2026) ensures maximum visibility and benefit. Certain opportunities like problem statement partnerships and keynote slots are limited and filled on a first-come basis.",
+      "We accept partners on a rolling basis, but earlier commitment means more visibility and planning time. If you're interested, reach out soon so we can include you in our materials and planning.",
   },
 ];
 

@@ -3,56 +3,56 @@
 import { motion } from "framer-motion";
 import {
   Users,
-  Eye,
   Lightbulb,
   GraduationCap,
-  Briefcase,
-  Sparkles,
+  Heart,
+  Eye,
+  Rocket,
 } from "lucide-react";
 import SectionWrapper from "@/app/components/SectionWrapper";
 
 const benefits = [
   {
     icon: Users,
-    title: "Access to Talent",
+    title: "Connect with Emerging Talent",
     description:
-      "Network with Hong Kong's brightest student developers and identify potential interns or future hires.",
+      "Meet Hong Kong's most motivated high school students—future engineers, designers, and entrepreneurs.",
+  },
+  {
+    icon: Lightbulb,
+    title: "Fresh Perspectives",
+    description:
+      "See your industry challenges through new eyes. Young minds often find solutions that experience overlooks.",
+  },
+  {
+    icon: GraduationCap,
+    title: "Support STEM Education",
+    description:
+      "Help cultivate the next generation of tech talent in Hong Kong through hands-on learning experiences.",
+  },
+  {
+    icon: Heart,
+    title: "Meaningful Community Impact",
+    description:
+      "Your support enables students who might not otherwise have access to such opportunities.",
   },
   {
     icon: Eye,
     title: "Brand Visibility",
     description:
-      "Logo placement on our website, venue, swag, and social media reaching thousands of students and parents.",
+      "Reach students, parents, and educators through our event, website, and social media channels.",
   },
   {
-    icon: Lightbulb,
-    title: "Real Solutions",
+    icon: Rocket,
+    title: "Early Innovation Access",
     description:
-      "Get fresh perspectives on your industry challenges. See working prototypes built in just 48 hours.",
-  },
-  {
-    icon: GraduationCap,
-    title: "Community Impact",
-    description:
-      "Support STEM education in Hong Kong and help shape the next generation of tech innovators.",
-  },
-  {
-    icon: Briefcase,
-    title: "Recruitment Pipeline",
-    description:
-      "Early access to top student talent. Identify and connect with future employees before anyone else.",
-  },
-  {
-    icon: Sparkles,
-    title: "Innovation Catalyst",
-    description:
-      "See what's possible when creative minds tackle your challenges without constraints.",
+      "Be first to see working prototypes built by creative students tackling real-world problems.",
   },
 ];
 
 export default function WhyPartner() {
   return (
-    <SectionWrapper>
+    <SectionWrapper dark>
       <div className="mb-16 text-center">
         <motion.span
           initial={{ opacity: 0 }}
@@ -70,6 +70,16 @@ export default function WhyPartner() {
         >
           Why Partner With TyphoonHacks?
         </motion.h2>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="text-subtle-gray mx-auto mt-4 max-w-2xl"
+        >
+          Benefits of partnering with a true hackathon where ideas spark and
+          everything is built from scratch in 48 hours.
+        </motion.p>
       </div>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -83,7 +93,7 @@ export default function WhyPartner() {
             whileHover={{ y: -4 }}
             className="glass hover:border-electric-cyan/30 rounded-xl p-6 text-center transition-all"
           >
-            <div className="bg-electric-cyan/10 mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full">
+            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full">
               <benefit.icon className="text-electric-cyan h-7 w-7" />
             </div>
             <h3 className="text-storm-white mb-2 font-[family-name:var(--font-space-grotesk)] text-lg font-bold">
