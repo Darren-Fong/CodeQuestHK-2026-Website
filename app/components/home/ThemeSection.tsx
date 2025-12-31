@@ -6,11 +6,10 @@ import TyphoonLogo from "../TyphoonLogo";
 import SectionWrapper from "@/app/components/SectionWrapper";
 
 const features = [
-  "Tackle real-world business challenges",
-  "Work with cutting-edge technologies",
-  // Are we even able to get mentors??
-  // "Mentorship from industry experts",
-  "Showcase your solutions to company leaders",
+  "Interview company representatives",
+  "Design innovative solutions",
+  "Build working prototypes",
+  "Pitch to expert panel",
 ];
 
 export default function ThemeSection() {
@@ -45,10 +44,10 @@ export default function ThemeSection() {
             className="text-subtle-gray mb-8 text-lg leading-relaxed"
           >
             This year, we&apos;re bridging the gap between student innovation
-            and industry needs. Partner companies will present real challenges
-            they face, and you&apos;ll have 48 hours to develop technological
-            solutions. Think of it as being a tech consultant—but with the
-            freedom to build whatever you envision.
+            and industry needs. You&apos;ll act as junior tech consultants,
+            receiving real business pain points from sponsoring companies.
+            Examples could include retail customer experience optimization,
+            smart logistics solutions, or other industry challenges.
           </motion.p>
 
           <motion.ul
