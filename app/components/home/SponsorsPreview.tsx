@@ -48,7 +48,7 @@ export default function SponsorsPreview() {
           We&apos;re looking for{" "}
           <span className="text-electric-cyan">event sponsors</span> to help
           make TyphoonHacks possible, and{" "}
-          <span className="text-electric-cyan">industry partners</span> to
+          <span className="text-electric-cyan"> industry partners</span> to
           contribute real-world problem statements that challenge our
           participants.
         </motion.p>
