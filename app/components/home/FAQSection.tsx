@@ -43,13 +43,13 @@ const faqs: FAQItem[] = [
     category: "General",
     question: "How much does it cost",
     answer:
-      "TyphoonHacks is completely free to participate! We believe in making tech opportunities accessible to all high school students in Hong Kong.",
+      "There will be a registration fee of $20, including exclusive souvenirs!",
   },
   {
     category: "Eligibility",
     question: "Who can come?",
     answer:
-      "TyphoonHacks is open to all Forms 1-5 or equivalent high school students currently enrolled in any Hong Kong school. Both local and international school students are welcome!",
+      "TyphoonHacks is open to all Form 1-5 or equivalent high school students currently enrolled in any Hong Kong school. Both local and international school students are welcome!",
   },
   {
     category: "Eligibility",
