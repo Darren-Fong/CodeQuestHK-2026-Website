@@ -1,7 +1,9 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
+import Hero2027 from "./components/home/Hero2027";
 
 export const metadata: Metadata = {
   title: "TyphoonHacks 2027",
@@ -9,22 +11,14 @@ export const metadata: Metadata = {
     "TyphoonHacks 2027. Six systems, two days. Break in, then write up what you found.",
 };
 
-const photos = [
-  "1LDwgO_Ko1KXbreXpxGVNDmxyM8rxK-Ac",
-  "1T2jyERPSHIURWMqYlAf83NuGINYQ3FXv",
-  "1S0vn8xUegzgEz9NRuFC4UNWWoTPB7-N3",
-  "1YqjZ-8bi5aAWzv64tB6m7jk7rz7mqd1P",
-  "1HX0g0WhSvyNJCmpdj_ENeKflA5PMbc9A",
-  "1_hBeXyIeKwglMLFjPWzNFvtRyT9qx7Y3",
-  "1uZQY30G1FSnQSz65x8n4ehga10monV77",
-  "15HZJRmJr6ceDvd5pDDT7IxvZf9u5Tooe",
-  "1xGT3xUAS7m1nrLRELOqHs9n78Ey7sSrY",
-  "1tP2g3WFM6gsrV9sIiRVk4mYn9YX9I4PR",
-  "11OVw8svieYzI6Zzkypakg3eTYrNaqJhW",
-  "1t_leyW98oqiDE35ziTQFGgUAY9aIT6OF",
-];
+const PHOTO = {
+  briefing: "1LDwgO_Ko1KXbreXpxGVNDmxyM8rxK-Ac",
+  pitching: "1T2jyERPSHIURWMqYlAf83NuGINYQ3FXv",
+  podium: "1S0vn8xUegzgEz9NRuFC4UNWWoTPB7-N3",
+  demo: "1HX0g0WhSvyNJCmpdj_ENeKflA5PMbc9A",
+};
 
-function thumb(id: string, size: number) {
+function img(id: string, size: number) {
   return "https://drive.google.com/thumbnail?id=" + id + "&sz=w" + size;
 }
 
@@ -33,179 +27,212 @@ export default function Home2027() {
     <>
       <Navigation />
       <main className="bg-deep-space text-storm-white">
-        <section className="px-4 pt-32 pb-20">
-          <div className="mx-auto max-w-4xl">
-            <p className="text-sm tracking-widest text-electric-cyan uppercase">2027</p>
-            <h1 className="mt-4 font-[family-name:var(--font-space-grotesk)] text-5xl font-bold sm:text-6xl">
-              TyphoonHacks 2027
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-storm-white/70">
-              Six systems. Two days. You break into them, then write up what you found.
-              The flags are the easy part. The report is what gets marked.
-            </p>
-            <p className="mt-3 text-storm-white/50">Dates and venue to be announced.</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/login" className="rounded-lg bg-electric-cyan px-5 py-2.5 text-sm font-semibold text-deep-space transition hover:brightness-110">
-                Sign in
-              </Link>
-              <Link href="/2026" className="rounded-lg border border-storm-white/20 px-5 py-2.5 text-sm font-semibold text-storm-white/80 transition hover:border-electric-cyan/50">
-                Look at 2026
-              </Link>
+        <Hero2027 />
+
+        <section id="details" className="px-4 py-20">
+          <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-5 md:items-center">
+            <div className="md:col-span-3">
+              <p className="text-xs tracking-widest text-electric-cyan uppercase">The event</p>
+              <h2 className="mt-3 font-[family-name:var(--font-space-grotesk)] text-3xl font-bold">
+                Two days, six systems, one report
+              </h2>
+              <p className="mt-5 leading-relaxed text-storm-white/65">
+                We build six web systems for the event. Each one has a flaw worth finding
+                and a business behind it that would care. You get two days to break in and
+                write it up.
+              </p>
+              <p className="mt-3 leading-relaxed text-storm-white/65">
+                The flags get you through the door. The analysis is what judges spend most
+                of their time on.
+              </p>
+              <dl className="mt-8 grid grid-cols-2 gap-6 sm:grid-cols-4">
+                {[
+                  ["6", "systems"],
+                  ["3", "flags each"],
+                  ["2", "days"],
+                  ["4", "max per team"],
+                ].map(([n, l]) => (
+                  <div key={l}>
+                    <dt className="font-[family-name:var(--font-space-grotesk)] text-3xl font-bold">{n}</dt>
+                    <dd className="mt-1 text-sm text-storm-white/50">{l}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+            <figure className="md:col-span-2">
+              <img
+                src={img(PHOTO.briefing, 1000)}
+                alt="Students waiting for the briefing at CityU, 2026"
+                loading="lazy"
+                referrerPolicy="no-referrer"
+                className="aspect-[4/5] w-full rounded-lg object-cover"
+              />
+              <figcaption className="mt-3 text-xs text-storm-white/40">
+                Waiting for the briefing, CityU, 2026.
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <figure className="relative">
+          <img
+            src={img(PHOTO.pitching, 1800)}
+            alt="Teams lined up at the front of the CMA Theatre, 2026"
+            loading="lazy"
+            referrerPolicy="no-referrer"
+            className="h-[46vh] w-full object-cover md:h-[60vh]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-deep-space via-deep-space/20 to-transparent" />
+          <figcaption className="absolute bottom-6 left-6 right-6 mx-auto max-w-6xl text-sm text-storm-white/80">
+            Pitch timer at three minutes. CityU CMA Theatre, 2026.
+          </figcaption>
+        </figure>
+
+        <section className="px-4 py-20">
+          <div className="mx-auto max-w-6xl">
+            <h2 className="font-[family-name:var(--font-space-grotesk)] text-3xl font-bold">
+              How the two days run
+            </h2>
+            <div className="mt-10 grid gap-10 md:grid-cols-2 md:items-start">
+              <div className="space-y-8">
+                <div>
+                  <p className="text-xs tracking-widest text-storm-white/40 uppercase">Day one</p>
+                  <h3 className="mt-2 text-lg font-semibold">Break in</h3>
+                  <p className="mt-2 leading-relaxed text-storm-white/65">
+                    You get access to the systems at the briefing. Start with the first flag
+                    on any system. It is recon, and it is meant to be the easy one. Each flag
+                    you find unlocks the next.
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xs tracking-widest text-storm-white/40 uppercase">Day one and two</p>
+                  <h3 className="mt-2 text-lg font-semibold">Write it up</h3>
+                  <p className="mt-2 leading-relaxed text-storm-white/65">
+                    Clear all three flags and the source unlocks. Then the real work starts:
+                    what was wrong, what it would cost the company, and what to fix first
+                    with a fixed budget.
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xs tracking-widest text-storm-white/40 uppercase">Day two</p>
+                  <h3 className="mt-2 text-lg font-semibold">Present</h3>
+                  <p className="mt-2 leading-relaxed text-storm-white/65">
+                    Eight minutes, then four minutes of questions. Bring the evidence. A
+                    summary of your afternoon is not a finding.
+                  </p>
+                </div>
+              </div>
+              <figure>
+                <img
+                  src={img(PHOTO.podium, 1200)}
+                  alt="A team presenting at the podium, 2026"
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
+                  className="aspect-[4/3] w-full rounded-lg object-cover"
+                />
+                <figcaption className="mt-3 text-xs text-storm-white/40">
+                  Presenting at the podium, 2026. Every team got six minutes and two for questions.
+                </figcaption>
+              </figure>
             </div>
           </div>
         </section>
 
-        <section className="border-t border-storm-white/10 px-4 py-16">
-          <div className="mx-auto max-w-4xl">
-            <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl font-bold">How it runs</h2>
-            <div className="mt-8 space-y-8">
-              <div>
-                <p className="text-xs tracking-widest text-storm-white/40 uppercase">Day one</p>
-                <h3 className="mt-2 text-lg font-semibold">The CTF</h3>
-                <p className="mt-2 max-w-2xl leading-relaxed text-storm-white/65">
-                  You get access to six web systems built for the event. Each has three
-                  flags. The first one is recon. The second needs something you found in
-                  the first. The third needs both. Nothing is solvable out of order.
+        <section className="border-t border-storm-white/10 px-4 py-20">
+          <div className="mx-auto max-w-6xl">
+            <div className="grid gap-10 md:grid-cols-5 md:items-center">
+              <figure className="md:col-span-2">
+                <img
+                  src={img(PHOTO.demo, 1000)}
+                  alt="A demo running on the projector, 2026"
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
+                  className="aspect-square w-full rounded-lg object-cover"
+                />
+                <figcaption className="mt-3 text-xs text-storm-white/40">
+                  A demo on the projector, 2026.
+                </figcaption>
+              </figure>
+              <div className="md:col-span-3">
+                <h2 className="font-[family-name:var(--font-space-grotesk)] text-3xl font-bold">The systems</h2>
+                <p className="mt-3 text-storm-white/60">
+                  Six domains, so the analysis work is not the same six times over.
                 </p>
-              </div>
-              <div>
-                <p className="text-xs tracking-widest text-storm-white/40 uppercase">Days one and two</p>
-                <h3 className="mt-2 text-lg font-semibold">The write-up</h3>
-                <p className="mt-2 max-w-2xl leading-relaxed text-storm-white/65">
-                  Submit all three flags and the system's source unlocks. Then you write a
-                  security assessment: what was wrong, what it would cost the business, and
-                  what to fix first with a fixed budget. Marks here are worth more than the flags.
-                </p>
-              </div>
-              <div>
-                <p className="text-xs tracking-widest text-storm-white/40 uppercase">Day two</p>
-                <h3 className="mt-2 text-lg font-semibold">The presentation</h3>
-                <p className="mt-2 max-w-2xl leading-relaxed text-storm-white/65">
-                  Eight minutes in front of judges, four minutes of questions. Bring the
-                  evidence, not a summary of your afternoon.
-                </p>
+                <ul className="mt-6 divide-y divide-storm-white/10 border-y border-storm-white/10">
+                  {[
+                    ["Resident alerting and access", "web, JWT, SSRF, messaging"],
+                    ["Internal tooling", "auth, IDOR, log forensics"],
+                    ["Operations backend", "queues, templates, secrets"],
+                    ["Field devices", "protocols, signatures, replay"],
+                    ["Two more", "announced closer to the event"],
+                  ].map(([name, tag]) => (
+                    <li key={name} className="flex flex-wrap items-baseline justify-between gap-2 py-3">
+                      <span className="font-medium">{name}</span>
+                      <span className="text-xs text-storm-white/45">{tag}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="border-t border-storm-white/10 px-4 py-16">
+        <section className="border-t border-storm-white/10 px-4 py-20">
           <div className="mx-auto max-w-4xl">
-            <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl font-bold">The systems</h2>
-            <p className="mt-3 max-w-2xl text-storm-white/60">
-              Each one is a different domain, so the analysis work is different too.
-            </p>
-            <ul className="mt-6 divide-y divide-storm-white/10 border-y border-storm-white/10">
-              {[
-                ["Resident alerting and access", "web, JWT, SSRF, messaging"],
-                ["Internal tooling", "auth, IDOR, log forensics"],
-                ["Operations backend", "queues, templates, secrets"],
-                ["Field devices", "protocols, signatures, replay"],
-                ["Two more", "announced closer to the event"],
-              ].map(([name, tag]) => (
-                <li key={name} className="flex flex-wrap items-baseline justify-between gap-2 py-3">
-                  <span className="font-medium">{name}</span>
-                  <span className="text-xs text-storm-white/45">{tag}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        <section className="border-t border-storm-white/10 px-4 py-16">
-          <div className="mx-auto max-w-5xl">
-            <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl font-bold">2026, in photos</h2>
-            <p className="mt-2 text-storm-white/55">Last year, before the format changed.</p>
-            <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {photos.map((id, i) => (
-                <a key={id} href={thumb(id, 2000)} target="_blank" rel="noreferrer" className="block aspect-[4/3] overflow-hidden rounded-md border border-storm-white/10 bg-ocean-depth">
-                  <img
-                    src={thumb(id, 900)}
-                    alt={"2026 photo " + (i + 1)}
-                    loading="lazy"
-                    referrerPolicy="no-referrer"
-                    className="h-full w-full object-cover"
-                  />
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="details" className="border-t border-storm-white/10 px-4 py-16">
-          <div className="mx-auto max-w-4xl">
-            <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl font-bold">Event details</h2>
-            <dl className="mt-6 grid gap-x-8 gap-y-4 sm:grid-cols-2">
+            <h2 className="font-[family-name:var(--font-space-grotesk)] text-3xl font-bold">Event details</h2>
+            <dl className="mt-8 grid gap-x-10 gap-y-5 sm:grid-cols-2">
               {[
                 ["Dates", "To be announced"],
                 ["Venue", "To be announced"],
                 ["Format", "Two days, in person"],
                 ["Teams", "2 to 4 people"],
                 ["Cost", "Free"],
-                ["Equipment", "Bring a laptop and charger"],
+                ["Equipment", "Laptop and charger"],
               ].map(([k, v]) => (
-                <div key={k} className="border-b border-storm-white/10 pb-3">
-                  <dt className="text-xs tracking-widest text-storm-white/40 uppercase">{k}</dt>
-                  <dd className="mt-1 text-storm-white/80">{v}</dd>
+                <div key={k} className="flex justify-between gap-4 border-b border-storm-white/10 pb-3">
+                  <dt className="text-storm-white/45">{k}</dt>
+                  <dd className="text-right text-storm-white/85">{v}</dd>
                 </div>
               ))}
             </dl>
           </div>
         </section>
 
-        <section id="timeline" className="border-t border-storm-white/10 px-4 py-16">
+        <section className="border-t border-storm-white/10 px-4 py-20">
           <div className="mx-auto max-w-4xl">
-            <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl font-bold">Timeline</h2>
-            <ol className="mt-6 space-y-6 border-l border-storm-white/15 pl-6">
+            <h2 className="font-[family-name:var(--font-space-grotesk)] text-3xl font-bold">Questions</h2>
+            <div className="mt-8 divide-y divide-storm-white/10">
               {[
-                ["Day 1, morning", "Briefing, team check-in, and system access. The CTF starts."],
-                ["Day 1, afternoon", "Flags. When a system is cleared, its source unlocks and the write-up begins."],
-                ["Day 2, morning", "Analysis and report writing. Mentors are around for questions."],
-                ["Day 2, afternoon", "Submission closes. Presentations, judging, then results."],
-              ].map(([when, what]) => (
-                <li key={when} className="relative">
-                  <span className="absolute -left-[31px] top-1.5 h-2.5 w-2.5 rounded-full bg-electric-cyan" />
-                  <p className="text-xs tracking-widest text-storm-white/40 uppercase">{when}</p>
-                  <p className="mt-1 text-storm-white/70">{what}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
-        <section id="faq" className="border-t border-storm-white/10 px-4 py-16">
-          <div className="mx-auto max-w-4xl">
-            <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl font-bold">Questions</h2>
-            <div className="mt-6 divide-y divide-storm-white/10">
-              {[
-                ["Do I need a team?", "You can enter with 2 to 4 people. If you don't have one, tell us and we'll pair you up."],
-                ["Do I need security experience?", "No. The first system is the easiest and the hints are there for a reason. Most teams have never done a CTF."],
-                ["Is it free?", "Yes. There is no entry fee."],
+                ["Do I need a team?", "Enter with 2 to 4 people. If you don't have one, tell us and we'll pair you up."],
+                ["Do I need security experience?", "No. The first system is the easiest and the hints exist for a reason. Most teams have never done a CTF."],
+                ["Is it free?", "Yes."],
                 ["What should I bring?", "A laptop and a charger. Internet is provided."],
-                ["Can we use AI tools?", "For the CTF, yes. For the written analysis, the work has to be yours."],
+                ["Can we use AI tools?", "During the CTF, yes. The written analysis has to be your own work."],
               ].map(([q, a]) => (
-                <div key={q} className="py-4">
+                <div key={q} className="py-5">
                   <p className="font-medium">{q}</p>
-                  <p className="mt-1 text-sm leading-relaxed text-storm-white/60">{a}</p>
+                  <p className="mt-1 leading-relaxed text-storm-white/60">{a}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="border-t border-storm-white/10 px-4 py-16">
-          <div className="mx-auto max-w-4xl">
-            <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl font-bold">Accounts</h2>
-            <p className="mt-3 max-w-2xl leading-relaxed text-storm-white/65">
-              Team logins are issued before the event. You can sign in now and check your
-              account. Flag submission stays closed until the competition starts.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Link href="/login" className="rounded-lg bg-electric-cyan px-5 py-2.5 text-sm font-semibold text-deep-space transition hover:brightness-110">
+        <section className="border-t border-storm-white/10 px-4 py-20">
+          <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-between gap-6">
+            <div>
+              <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl font-bold">Accounts are open</h2>
+              <p className="mt-2 text-storm-white/60">
+                Sign in to check your team. Flag submission opens on the day.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <Link href="/login" className="rounded-lg bg-electric-cyan px-6 py-3 font-semibold text-deep-space transition hover:brightness-110">
                 Sign in
               </Link>
-              <Link href="/2025" className="rounded-lg border border-storm-white/20 px-5 py-2.5 text-sm font-semibold text-storm-white/80 transition hover:border-electric-cyan/50">
-                2025 archive
+              <Link href="/2026" className="inline-flex items-center gap-2 rounded-lg border border-storm-white/20 px-6 py-3 font-semibold text-storm-white/80 transition hover:border-electric-cyan/50">
+                See 2026
+                <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </div>
