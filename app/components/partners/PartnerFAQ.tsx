@@ -14,10 +14,10 @@ const faqs = [
   {
     question: "When and where is the event?",
     answer:
-      "TyphoonHacks 2026 will take place February 14-15, 2026 (during CNY holidays) at the City University of Hong Kong.",
+      "TyphoonHacks 2027 will take place February 14-15, 2027 (during CNY holidays) at the City University of Hong Kong.",
   },
   {
-    question: "What's the 2026 theme?",
+    question: "What's the 2027 theme?",
     answer:
       "This year's theme is 'Technology Consulting for the Future.' Partner companies present real business challenges, and student teams develop technological solutions over 48 hours. It's like having a consulting team work on your problem, but with the freedom to build creative, unconventional solutions.",
   },

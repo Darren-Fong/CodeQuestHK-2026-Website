@@ -92,7 +92,7 @@ export default function PartnershipTypes() {
           </h3>
 
           <p className="text-subtle-gray mb-6 leading-relaxed">
-            Help us make TyphoonHacks 2026 happen by providing resources to
+            Help us make TyphoonHacks 2027 happen by providing resources to
             support the event. Every contribution—big or small—helps create an
             unforgettable experience for Hong Kong&apos;s young innovators.
           </p>

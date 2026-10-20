@@ -52,7 +52,7 @@ export default function PartnersHero() {
           transition={{ delay: 0.4 }}
           className="text-storm-white/80 mb-6 text-xl md:text-2xl"
         >
-          TyphoonHacks 2026 needs your support
+          TyphoonHacks 2027 needs your support
         </motion.p>
 
         <motion.p

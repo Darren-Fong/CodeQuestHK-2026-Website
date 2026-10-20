@@ -1,73 +1,51 @@
-"use client";
-
+import { Metadata } from "next";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
+import PageHero from "../components/PageHero";
 import ContactForm from "../components/ContactForm";
-import ParticleBackground from "../components/ParticleBackground";
-import { motion } from "framer-motion";
+import ScrollAnimations from "../components/ScrollAnimations";
+
+export const metadata: Metadata = {
+  title: "Contact | TyphoonHacks 2027",
+  description: "Questions about TyphoonHacks 2027, partnerships or judging.",
+};
 
 export default function ContactPage() {
   return (
     <>
       <Navigation />
-      <main className="relative min-h-screen pt-24">
-        {/* Background gradient */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(135deg, #0a1628 0%, #0d2847 40%, #1a3a5c 70%, #0d2847 100%)",
-          }}
+      <main className="bg-deep-space text-storm-white">
+        <ScrollAnimations />
+        <PageHero
+          badge="Contact"
+          title="Contact us"
+          subtitle="Questions about the event, partnerships or judging. We usually reply within a day."
         />
 
-        {/* Grid overlay */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(0, 212, 255, 0.3) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(0, 212, 255, 0.3) 1px, transparent 1px)
-            `,
-            backgroundSize: "60px 60px",
-          }}
-        />
-
-        {/* Particle background */}
-        <ParticleBackground />
-
-        {/* Content */}
-        <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-          {/* Page Header */}
-          <div className="mb-12 text-center">
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-electric-cyan font-[family-name:var(--font-jetbrains-mono)] text-sm tracking-wider uppercase"
-            >
-              Get in Touch
-            </motion.span>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-storm-white mt-4 font-[family-name:var(--font-space-grotesk)] text-4xl font-bold md:text-5xl"
-            >
-              Contact Us
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              className="text-subtle-gray mx-auto mt-4 max-w-2xl text-lg"
-            >
-              Have questions? Want to get involved? We&apos;d love to hear from
-              you.
-            </motion.p>
+        <section className="px-4 py-16">
+          <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-5">
+            <div className="md:col-span-3">
+              <ContactForm />
+            </div>
+            <aside className="md:col-span-2">
+              <h2 className="font-[family-name:var(--font-space-grotesk)] text-xl font-bold">Before you write</h2>
+              <ul className="mt-4 space-y-4 text-storm-white/65">
+                <li>
+                  <span className="block text-xs tracking-widest text-storm-white/40 uppercase">Teams and entry</span>
+                  Use the form and pick "Participant Question". Include your school and year.
+                </li>
+                <li>
+                  <span className="block text-xs tracking-widest text-storm-white/40 uppercase">Partnerships</span>
+                  Pick "Event Sponsor" or "Industry Partner" and tell us what you can offer.
+                </li>
+                <li>
+                  <span className="block text-xs tracking-widest text-storm-white/40 uppercase">Reply time</span>
+                  One working day. If it is urgent, say so in the message.
+                </li>
+              </ul>
+            </aside>
           </div>
-
-          {/* Contact Form Component */}
-          <ContactForm />
-        </div>
+        </section>
       </main>
       <Footer />
     </>
