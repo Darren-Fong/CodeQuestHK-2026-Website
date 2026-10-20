@@ -7,15 +7,15 @@ import { Plus } from "lucide-react";
 const items = [
   {
     q: "Do I need a team?",
-    a: "Enter with 2 to 4 people. If you don't have one, tell us and we'll pair you up before the event.",
+    a: "Enter with 3 to 5 people. If you don't have a full team, tell us and we'll pair you up before the event.",
   },
   {
     q: "Do I need security experience?",
     a: "No. The first system is the easiest, and the hints exist for a reason. Most teams have never done a CTF before.",
   },
   {
-    q: "Is it free?",
-    a: "Yes. There is no entry fee.",
+    q: "How much does it cost?",
+    a: "HKD 20 per team. That covers the whole team, not each person.",
   },
   {
     q: "What should I bring?",

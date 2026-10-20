@@ -53,7 +53,7 @@ export default function Home2027() {
                   ["6", "systems"],
                   ["3", "flags each"],
                   ["2", "days"],
-                  ["4", "max per team"],
+                  ["5", "max per team"],
                 ].map(([n, l]) => (
                   <div key={l}>
                     <dt className="font-[family-name:var(--font-space-grotesk)] text-3xl font-bold">{n}</dt>
@@ -188,9 +188,8 @@ export default function Home2027() {
                 ["Dates", "13-14 February 2027"],
                 ["Venue", "To be announced"],
                 ["Format", "Two days, in person"],
-                ["Teams", "2 to 4 people"],
-                ["Cost", "Free"],
-                ["Equipment", "Laptop and charger"],
+                ["Teams", "3 to 5 people"],
+                ["Cost", "HKD 20 per team"],
               ].map(([k, v]) => (
                 <div key={k} className="flex justify-between gap-4 border-b border-storm-white/10 pb-3">
                   <dt className="text-storm-white/45">{k}</dt>
