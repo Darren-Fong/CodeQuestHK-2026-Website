@@ -220,3 +220,15 @@ h6 {
 @media (prefers-reduced-motion: reduce) {
   .reveal-init { opacity: 1; transform: none; transition: none; }
 }
+
+/* marquee */
+.marquee {
+  animation: marquee 28s linear infinite;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee { animation: none; }
+}
