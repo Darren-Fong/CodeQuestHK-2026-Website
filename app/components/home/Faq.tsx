@@ -23,12 +23,12 @@ const items = [
   },
   {
     q: "Can we use AI tools?",
-    a: "During the CTF, yes. The written analysis has to be your own work, and judges will ask about it.",
+    a: "No for the CTF. For the written analysis, yes, as long as you say where you used it.",
   },
 ];
 
 export default function Faq() {
-  const [open, setOpen] = useState<number | null>(0);
+  const [open, setOpen] = useState<number | null>(null);
 
   return (
     <div className="mt-8 border-y border-storm-white/10">

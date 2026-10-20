@@ -9,7 +9,7 @@ import Countdown from "./Countdown";
 
 export default function Hero2027() {
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
+    <section className="relative flex h-[100svh] min-h-[620px] items-center justify-center overflow-hidden">
       <div
         className="absolute inset-0"
         style={{
@@ -63,7 +63,7 @@ export default function Hero2027() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="mb-4 text-xl text-storm-white/90 md:text-2xl"
+          className="mb-3 text-lg text-storm-white/90 sm:text-xl md:text-2xl"
         >
           Six systems. Two days. Break in, then write it up.
         </motion.p>
@@ -72,7 +72,7 @@ export default function Hero2027() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
-          className="mb-10 text-storm-white/60"
+          className="mb-8 text-sm text-storm-white/60 sm:text-base"
         >
           A CTF and security analysis event for Hong Kong students.
         </motion.p>
@@ -102,7 +102,7 @@ export default function Hero2027() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
-          className="mt-10"
+          className="mt-8"
         >
           <Countdown />
           <p className="mt-3 text-xs tracking-widest text-storm-white/35 uppercase">
@@ -116,7 +116,7 @@ export default function Hero2027() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-storm-white/60 transition-colors hover:text-electric-cyan"
+        className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 text-storm-white/60 transition-colors hover:text-electric-cyan sm:block"
         aria-label="Scroll to details"
       >
         <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
