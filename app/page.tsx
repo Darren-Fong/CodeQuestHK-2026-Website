@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Calendar, ShieldCheck, Terminal, Users } from "lucide-react";
+import { ArrowRight, Calendar, Camera, ShieldCheck, Terminal, Users } from "lucide-react";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 
@@ -10,11 +10,36 @@ export const metadata: Metadata = {
     "TyphoonHacks 2027: capture the flag, then analyse the system. A two-part security event for Hong Kong students.",
 };
 
+const photos = [
+  "1LDwgO_Ko1KXbreXpxGVNDmxyM8rxK-Ac",
+  "1T2jyERPSHIURWMqYlAf83NuGINYQ3FXv",
+  "1S0vn8xUegzgEz9NRuFC4UNWWoTPB7-N3",
+  "1YqjZ-8bi5aAWzv64tB6m7jk7rz7mqd1P",
+  "1HX0g0WhSvyNJCmpdj_ENeKflA5PMbc9A",
+  "1_hBeXyIeKwglMLFjPWzNFvtRyT9qx7Y3",
+  "1uZQY30G1FSnQSz65x8n4ehga10monV77",
+  "15HZJRmJr6ceDvd5pDDT7IxvZf9u5Tooe",
+  "1xGT3xUAS7m1nrLRELOqHs9n78Ey7sSrY",
+  "1tP2g3WFM6gsrV9sIiRVk4mYn9YX9I4PR",
+  "11OVw8svieYzI6Zzkypakg3eTYrNaqJhW",
+  "1t_leyW98oqiDE35ziTQFGgUAY9aIT6OF",
+  "10p2aoVp_Gzgx35WsEd5L6-7Fezvi7G_z",
+  "1B1xlaMBhHrcTgkYaNihYNbllLIDSVt8U",
+  "1U5YcB1HEy2Xwp4CIOlZMeKLgl2argHiC",
+  "11ePd3yTlxEsJflwhLaTgo6abB7boL3ka",
+  "1BNrrwSXZGWlnRMdjXpkif9ChTY9xkVgv",
+  "1hENXLrT_Eo_KveiKRqyiTIn80hTPrJ1z",
+];
+
+function thumb(id: string, size = 1600) {
+  return "https://drive.google.com/thumbnail?id=" + id + "&sz=w" + size;
+}
+
 const format = [
   {
     icon: Terminal,
     title: "Part 1: Break in",
-    body: "Teams receive a set of live systems built for the event. Three chained flags per system, each stage unlocking the next. No guessing, no trivia: real vulnerabilities, real payloads.",
+    body: "Teams receive live systems built for the event. Three chained flags per system, each stage unlocking the next. Real vulnerabilities, real payloads.",
   },
   {
     icon: ShieldCheck,
@@ -55,23 +80,51 @@ export default function Home2027() {
               cybersecurity analysis, built around systems that behave like the real thing.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link
-                href="/submit"
-                className="group inline-flex items-center gap-2 rounded-lg bg-electric-cyan px-6 py-3 font-semibold text-deep-space transition hover:brightness-110"
-              >
+              <Link href="/submit" className="group inline-flex items-center gap-2 rounded-lg bg-electric-cyan px-6 py-3 font-semibold text-deep-space transition hover:brightness-110">
                 Submit a flag
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Link>
-              <Link
-                href="/2026"
-                className="inline-flex items-center gap-2 rounded-lg border border-storm-white/20 px-6 py-3 font-semibold text-storm-white/80 transition hover:border-electric-cyan/50 hover:text-storm-white"
-              >
+              <Link href="/2026" className="inline-flex items-center gap-2 rounded-lg border border-storm-white/20 px-6 py-3 font-semibold text-storm-white/80 transition hover:border-electric-cyan/50">
                 Look back at 2026
               </Link>
             </div>
             <div className="mt-10 flex items-center justify-center gap-2 text-sm text-storm-white/50">
               <Calendar className="h-4 w-4" />
               Dates and venue announced soon
+            </div>
+          </div>
+        </section>
+
+        <section id="gallery" className="border-t border-storm-white/10 px-4 py-20">
+          <div className="mx-auto max-w-6xl">
+            <div className="flex items-center gap-2">
+              <Camera className="h-5 w-5 text-electric-cyan" />
+              <h2 className="font-[family-name:var(--font-space-grotesk)] text-3xl font-bold">
+                2026, in photos
+              </h2>
+            </div>
+            <p className="mt-2 max-w-2xl text-storm-white/60">
+              Last year's hackathon, before the format changed. Teams arrived with nothing
+              prepared and left with working prototypes.
+            </p>
+            <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {photos.map((id, i) => (
+                <a
+                  key={id}
+                  href={thumb(id, 2000)}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group relative aspect-[4/3] overflow-hidden rounded-lg border border-storm-white/10 bg-ocean-depth"
+                >
+                  <img
+                    src={thumb(id, 900)}
+                    alt={"TyphoonHacks 2026 photo " + (i + 1)}
+                    loading="lazy"
+                    referrerPolicy="no-referrer"
+                    className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                  />
+                </a>
+              ))}
             </div>
           </div>
         </section>
@@ -86,15 +139,10 @@ export default function Home2027() {
             </p>
             <div className="mt-10 grid gap-6 md:grid-cols-3">
               {format.map((item) => (
-                <div
-                  key={item.title}
-                  className="rounded-xl border border-storm-white/10 bg-ocean-depth/60 p-6"
-                >
+                <div key={item.title} className="rounded-xl border border-storm-white/10 bg-ocean-depth/60 p-6">
                   <item.icon className="h-6 w-6 text-electric-cyan" />
                   <h3 className="mt-4 text-lg font-semibold">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-storm-white/60">
-                    {item.body}
-                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-storm-white/60">{item.body}</p>
                 </div>
               ))}
             </div>
@@ -112,10 +160,7 @@ export default function Home2027() {
             </p>
             <div className="mt-10 grid gap-4 sm:grid-cols-2">
               {systems.map((s) => (
-                <div
-                  key={s.name}
-                  className="flex items-start justify-between gap-4 rounded-lg border border-storm-white/10 bg-ocean-depth/40 px-5 py-4"
-                >
+                <div key={s.name} className="flex items-start justify-between gap-4 rounded-lg border border-storm-white/10 bg-ocean-depth/40 px-5 py-4">
                   <span className="font-medium">{s.name}</span>
                   <span className="text-right text-xs text-storm-white/45">{s.tag}</span>
                 </div>
@@ -130,15 +175,16 @@ export default function Home2027() {
               Ready to break something?
             </h2>
             <p className="mt-3 text-storm-white/65">
-              Flag submission is open. One flag per entry, case-sensitive.
+              Submission opens when the competition starts. Team accounts work now.
             </p>
-            <Link
-              href="/submit"
-              className="mt-6 inline-flex items-center gap-2 rounded-lg bg-electric-cyan px-6 py-3 font-semibold text-deep-space transition hover:brightness-110"
-            >
-              Open the submission page
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+            <div className="mt-6 flex flex-wrap justify-center gap-3">
+              <Link href="/login" className="rounded-lg bg-electric-cyan px-6 py-3 font-semibold text-deep-space transition hover:brightness-110">
+                Sign in
+              </Link>
+              <Link href="/2025" className="rounded-lg border border-storm-white/20 px-6 py-3 font-semibold text-storm-white/80 transition hover:border-electric-cyan/50">
+                2025 archive
+              </Link>
+            </div>
           </div>
         </section>
       </main>
