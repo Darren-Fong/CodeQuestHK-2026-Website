@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import ParticleBackground from "../ParticleBackground";
 import TyphoonLogo from "../TyphoonLogo";
+import Countdown from "./Countdown";
 
 export default function Hero2027() {
   return (
@@ -44,7 +45,7 @@ export default function Hero2027() {
           className="mb-6 inline-block"
         >
           <span className="rounded-full border border-electric-cyan/30 bg-electric-cyan/20 px-4 py-2 text-sm font-semibold tracking-wider text-electric-cyan uppercase">
-            Hong Kong · 2027
+            13–14 Feb 2027 · Hong Kong
           </span>
         </motion.div>
 
@@ -95,6 +96,18 @@ export default function Hero2027() {
             See 2026
             <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
           </Link>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2 }}
+          className="mt-10"
+        >
+          <Countdown />
+          <p className="mt-3 text-xs tracking-widest text-storm-white/35 uppercase">
+            Until the briefing
+          </p>
         </motion.div>
       </div>
 

@@ -182,7 +182,7 @@ export default function Home2027() {
             <h2 className="font-[family-name:var(--font-space-grotesk)] text-3xl font-bold">Event details</h2>
             <dl className="mt-8 grid gap-x-10 gap-y-5 sm:grid-cols-2">
               {[
-                ["Dates", "To be announced"],
+                ["Dates", "13-14 February 2027"],
                 ["Venue", "To be announced"],
                 ["Format", "Two days, in person"],
                 ["Teams", "2 to 4 people"],
