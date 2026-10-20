@@ -4,6 +4,8 @@ import { ArrowRight } from "lucide-react";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Hero2027 from "./components/home/Hero2027";
+import Faq from "./components/home/Faq";
+import ScrollAnimations from "./components/ScrollAnimations";
 
 export const metadata: Metadata = {
   title: "TyphoonHacks 2027",
@@ -27,6 +29,7 @@ export default function Home2027() {
     <>
       <Navigation />
       <main className="bg-deep-space text-storm-white">
+        <ScrollAnimations />
         <Hero2027 />
 
         <section id="details" className="px-4 py-20">
@@ -201,20 +204,7 @@ export default function Home2027() {
         <section className="border-t border-storm-white/10 px-4 py-20">
           <div className="mx-auto max-w-4xl">
             <h2 className="font-[family-name:var(--font-space-grotesk)] text-3xl font-bold">Questions</h2>
-            <div className="mt-8 divide-y divide-storm-white/10">
-              {[
-                ["Do I need a team?", "Enter with 2 to 4 people. If you don't have one, tell us and we'll pair you up."],
-                ["Do I need security experience?", "No. The first system is the easiest and the hints exist for a reason. Most teams have never done a CTF."],
-                ["Is it free?", "Yes."],
-                ["What should I bring?", "A laptop and a charger. Internet is provided."],
-                ["Can we use AI tools?", "During the CTF, yes. The written analysis has to be your own work."],
-              ].map(([q, a]) => (
-                <div key={q} className="py-5">
-                  <p className="font-medium">{q}</p>
-                  <p className="mt-1 leading-relaxed text-storm-white/60">{a}</p>
-                </div>
-              ))}
-            </div>
+            <Faq />
           </div>
         </section>
 

@@ -8,9 +8,9 @@ import PartnerCTA from "../components/partners/PartnerCTA";
 import PartnerFAQ from "../components/partners/PartnerFAQ";
 
 export const metadata: Metadata = {
-  title: "Partner With Us | TyphoonHacks 2026",
+  title: "Partner With Us | TyphoonHacks 2027",
   description:
-    "Support Hong Kong's premier high school hackathon. Become an event sponsor or industry partner for TyphoonHacks 2026.",
+    "Support Hong Kong's premier high school hackathon. Become an event sponsor or industry partner for TyphoonHacks 2027.",
 };
 
 export default function PartnersPage() {
