@@ -132,6 +132,67 @@ export default function Home2027() {
           </div>
         </section>
 
+        <section id="details" className="border-t border-storm-white/10 px-4 py-16">
+          <div className="mx-auto max-w-4xl">
+            <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl font-bold">Event details</h2>
+            <dl className="mt-6 grid gap-x-8 gap-y-4 sm:grid-cols-2">
+              {[
+                ["Dates", "To be announced"],
+                ["Venue", "To be announced"],
+                ["Format", "Two days, in person"],
+                ["Teams", "2 to 4 people"],
+                ["Cost", "Free"],
+                ["Equipment", "Bring a laptop and charger"],
+              ].map(([k, v]) => (
+                <div key={k} className="border-b border-storm-white/10 pb-3">
+                  <dt className="text-xs tracking-widest text-storm-white/40 uppercase">{k}</dt>
+                  <dd className="mt-1 text-storm-white/80">{v}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </section>
+
+        <section id="timeline" className="border-t border-storm-white/10 px-4 py-16">
+          <div className="mx-auto max-w-4xl">
+            <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl font-bold">Timeline</h2>
+            <ol className="mt-6 space-y-6 border-l border-storm-white/15 pl-6">
+              {[
+                ["Day 1, morning", "Briefing, team check-in, and system access. The CTF starts."],
+                ["Day 1, afternoon", "Flags. When a system is cleared, its source unlocks and the write-up begins."],
+                ["Day 2, morning", "Analysis and report writing. Mentors are around for questions."],
+                ["Day 2, afternoon", "Submission closes. Presentations, judging, then results."],
+              ].map(([when, what]) => (
+                <li key={when} className="relative">
+                  <span className="absolute -left-[31px] top-1.5 h-2.5 w-2.5 rounded-full bg-electric-cyan" />
+                  <p className="text-xs tracking-widest text-storm-white/40 uppercase">{when}</p>
+                  <p className="mt-1 text-storm-white/70">{what}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        <section id="faq" className="border-t border-storm-white/10 px-4 py-16">
+          <div className="mx-auto max-w-4xl">
+            <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl font-bold">Questions</h2>
+            <div className="mt-6 divide-y divide-storm-white/10">
+              {[
+                ["Do I need a team?", "You can enter with 2 to 4 people. If you don't have one, tell us and we'll pair you up."],
+                ["Do I need security experience?", "No. The first system is the easiest and the hints are there for a reason. Most teams have never done a CTF."],
+                ["Is it free?", "Yes. There is no entry fee."],
+                ["What should I bring?", "A laptop and a charger. Internet is provided."],
+                ["Can we use AI tools?", "For the CTF, yes. For the written analysis, the work has to be yours."],
+              ].map(([q, a]) => (
+                <div key={q} className="py-4">
+                  <p className="font-medium">{q}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-storm-white/60">{a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="border-t border-storm-white/10 px-4 py-16">
           <div className="mx-auto max-w-4xl">
             <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl font-bold">Accounts</h2>

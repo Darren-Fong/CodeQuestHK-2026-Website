@@ -11,7 +11,6 @@ import { linksConfig } from "@/app/config/links";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/2025", label: "2025" },
   { href: "/2026", label: "2026" },
   { href: "/submit", label: "Submit" },
   { href: "/login", label: "Login" },
