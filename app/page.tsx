@@ -18,6 +18,8 @@ const PHOTO = {
   timer: "1T2jyERPSHIURWMqYlAf83NuGINYQ3FXv",
   speaking: "1S0vn8xUegzgEz9NRuFC4UNWWoTPB7-N3",
   calling: "1HX0g0WhSvyNJCmpdj_ENeKflA5PMbc9A",
+  working1: "1U5YcB1HEy2Xwp4CIOlZMeKLgl2argHiC",
+  working2: "1BNrrwSXZGWlnRMdjXpkif9ChTY9xkVgv",
 };
 
 function img(id: string, size: number) {
@@ -162,6 +164,42 @@ export default function Home2027() {
                   summary of your afternoon is not a finding.
                 </p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-t border-storm-white/10 px-4 py-20">
+          <div className="mx-auto max-w-6xl">
+            <h2 className="font-[family-name:var(--font-space-grotesk)] text-3xl font-bold">In the room</h2>
+            <p className="mt-3 max-w-2xl leading-relaxed text-storm-white/60">
+              Two days is a lot of sitting. Most of it looks like this: laptops open,
+              half a team talking through the same problem.
+            </p>
+            <div className="mt-10 grid gap-4 sm:grid-cols-2">
+              <figure>
+                <img
+                  src={img(PHOTO.working1, 1200)}
+                  alt="Students working on laptops along a desk at TyphoonHacks 2026"
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
+                  className="aspect-[4/3] w-full rounded-lg object-cover"
+                />
+                <figcaption className="mt-3 text-xs text-storm-white/40">
+                  Laptops open along the desk, 2026.
+                </figcaption>
+              </figure>
+              <figure>
+                <img
+                  src={img(PHOTO.working2, 1200)}
+                  alt="A team working at their desk during TyphoonHacks 2026"
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
+                  className="aspect-[4/3] w-full rounded-lg object-cover"
+                />
+                <figcaption className="mt-3 text-xs text-storm-white/40">
+                  Mid-afternoon, 2026. One screen between three people.
+                </figcaption>
+              </figure>
             </div>
           </div>
         </section>
